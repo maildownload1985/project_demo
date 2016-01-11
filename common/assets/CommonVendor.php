@@ -12,19 +12,23 @@ class CommonVendor extends AssetBundle
     public $css = [
     		'works/calendar/css/fullcalendar.css',
     		'works/calendar/css/fullcalendar.print.css',
-    		'works/calendar/css/calendar.css'
+    		'works/calendar/css/fullcalendar.min.css',
     ];
     
     public $js = [
     		'/vendor/bower/works/calendar/js/jquery.js',
     		'/vendor/bower/works/calendar/js/angular.js',
+    		'/vendor/bower/works/calendar/js/angular-locale_vi-vn.js',
     		'/vendor/bower/works/calendar/js/ui-bootstrap-tpls-0.9.0.js',
     		'/vendor/bower/works/calendar/js/moment.js',
-    		'/vendor/bower/works/calendar/js/fullcalendar.js',
-    		'/vendor/bower/works/calendar/js/gcal.js',
-    		'/vendor/bower/works/calendar/js/angular-locale_vi-vn.js',
     		'/vendor/bower/works/calendar/js/calendar.js',
     		'/vendor/bower/works/calendar/js/calendarDemo.js',
+    		'/vendor/bower/works/calendar/js/fullcalendar.js',
+    		'/vendor/bower/works/calendar/js/fullcalendar.min.js',
+    		'/vendor/bower/works/calendar/js/gcal.js',
+    		'/vendor/bower/works/calendar/js/lib/jquery.min.js',
+    		'/vendor/bower/works/calendar/js/lib/jquery-ui.custom.min.js',
+    		'/vendor/bower/works/calendar/js/lib/moment.min.js',
     ];
     
     public $depends = [
