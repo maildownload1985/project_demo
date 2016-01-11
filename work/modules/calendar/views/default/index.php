@@ -13,6 +13,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="event-create">
     <div role="main">
         <section id="directives-calendar" ng-controller="CalendarCtrl">
+            <div class="page-header">
+                <h1>UI-Calendar</h1>
+            </div>
             <div class="well">
                 <div class="row-fluid">
                 <!-- 
