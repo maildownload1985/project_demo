@@ -41,7 +41,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 								<div class="col-xs-6 col-md-4">
 									<div ng-controller="MainCtrl" class="container">
 										<button ng-click="toggleModal()" class="btn btn-primary">Add Event</button>
-										<?php echo $this->render('inc/_popup', ['model' => $searchModel]); ?>
+										<?= $this->render('inc/_popup', ['model' => $model]) ?>
 									</div>
 								</div>
 							</div>
