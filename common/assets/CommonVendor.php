@@ -13,13 +13,12 @@ class CommonVendor extends AssetBundle
     		'works/calendar/css/fullcalendar.css',
 //     		'works/calendar/css/fullcalendar.print.css',
     		'works/calendar/css/fullcalendar.min.css',
-    		
     ];
     
     public $js = [
     		'works/calendar/js/jquery.js',
     		'works/calendar/js/angular.js',
-//     		'works/calendar/js/angular-locale_vi-vn.js',
+    		'works/calendar/js/angular-locale_vi-vn.js',
     		'works/calendar/js/ui-bootstrap-tpls-0.9.0.js',
     		'works/calendar/js/moment.js',
     		'works/calendar/js/calendar.js',
