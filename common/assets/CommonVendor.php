@@ -29,6 +29,7 @@ class CommonVendor extends AssetBundle
     		'works/calendar/js/lib/jquery.min.js',
     		'works/calendar/js/lib/jquery-ui.custom.min.js',
     		'works/calendar/js/lib/moment.min.js',
+    		
     ];
     
     public $depends = [

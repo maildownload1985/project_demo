@@ -10,7 +10,29 @@ $this->title = 'Create Event';
 $this->params['breadcrumbs'][] = ['label' => 'Events', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="event-create">
+
+<div id="calendar"/>
+<div ng-app="calendarDemoApp" class="event-create">
+
+<div ng-controller="MainCtrl" class="container">
+  <h1>Modal example</h1>
+  <button ng-click="toggleModal()" class="btn btn-default">Open modal</button>
+    
+  <modal title="Login form" visible="showModal">
+    <form role="form">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" />
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </modal>
+</div>
+
     <div role="main">
         <section id="directives-calendar" ng-controller="CalendarCtrl">
             <div class="page-header">

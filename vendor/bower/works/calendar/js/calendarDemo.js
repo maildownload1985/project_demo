@@ -133,3 +133,118 @@ calendarDemoApp.controller('CalendarCtrl',
     $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
 });
 /* EOF */
+
+//var modal = angular.module('btfModal', ['btfModal.modal']);
+
+//let's make a modal called `myModal`
+calendarDemoApp.factory('myModal', function (btfModal) {
+	return btfModal({
+	 controller: 'MyModalCtrl',
+	 controllerAs: 'modal',
+	 templateUrl: '/vendor/bower/works/calendar/css/modal/modal.html'
+	});
+}).
+
+//typically you'll inject the modal service into its own
+//controller so that the modal can close itself
+controller('MyModalCtrl', function ($scope, $timeout, myModal) {
+
+var ctrl = this,
+   timeoutId;
+
+ctrl.tickCount = 5;
+
+ctrl.closeMe = function () {
+ cancelTick();
+ myModal.deactivate();
+};
+
+function tick() {
+ timeoutId = $timeout(function() {
+   ctrl.tickCount -= 1;
+   if (ctrl.tickCount <= 0) {
+     ctrl.closeMe();
+   } else {
+     tick();
+   }
+ }, 1000);
+}
+
+function cancelTick() {
+ $timeout.cancel(timeoutId);
+}
+
+$scope.$on('$destroy', cancelTick);
+
+tick();
+}).
+
+controller('MyCtrl', function (myModal) {
+this.showModal = myModal.activate;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+calendarDemoApp.controller('MainCtrl', function ($scope) {
+    $scope.showModal = false;
+    $scope.toggleModal = function(){
+        $scope.showModal = !$scope.showModal;
+    };
+  });
+
+calendarDemoApp.directive('modal', function () {
+    return {
+//    	templateUrl: '/vendor/bower/works/calendar/css/modal/modal.html'
+        
+    		template: '<div class="modal fade">' + 
+            '<div class="modal-dialog">' + 
+              '<div class="modal-content">' + 
+                '<div class="modal-header">' + 
+                  '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' + 
+                  '<h4 class="modal-title">{{ title }}</h4>' + 
+                '</div>' + 
+                '<div class="modal-body" ng-transclude></div>' + 
+              '</div>' + 
+            '</div>' + 
+          '</div>',
+      restrict: 'E',
+      transclude: true,
+      replace:true,
+      scope:true,
+      link: function postLink(scope, element, attrs) {
+        scope.title = attrs.title;
+
+        scope.$watch(attrs.visible, function(value){
+          if(value == true)
+            $(element).modal('show');
+          else
+            $(element).modal('hide');
+        });
+
+        $(element).on('shown.bs.modal', function(){
+          scope.$apply(function(){
+            scope.$parent[attrs.visible] = true;
+          });
+        });
+
+        $(element).on('hidden.bs.modal', function(){
+          scope.$apply(function(){
+            scope.$parent[attrs.visible] = false;
+          });
+        });
+      }
+    };
+  });

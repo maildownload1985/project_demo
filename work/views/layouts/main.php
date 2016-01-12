@@ -11,7 +11,7 @@ CommonVendor::registerPoint($this, View::POS_HEAD);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>" ng-app="calendarDemoApp">
+<html lang="<?= Yii::$app->language ?>" > 
     <head>
         <meta charset="<?= Yii::$app->charset ?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
