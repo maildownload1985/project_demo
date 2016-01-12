@@ -41,24 +41,11 @@ $this->params ['breadcrumbs'] [] = $this->title;
 								<div class="col-xs-6 col-md-4">
 									<div ng-controller="MainCtrl" class="container">
 										<button ng-click="toggleModal()" class="btn btn-primary">Add Event</button>
-										<modal title="Login form" visible="showModal" style="display: none;">
-										<form role="form">
-											<div class="form-group">
-												<label for="email">Email address</label> <input type="email" class="form-control" id="email" placeholder="Enter email" />
-											</div>
-											<div class="form-group">
-												<label for="password">Password</label> <input type="password" class="form-control" id="password" placeholder="Password" />
-											</div>
-											<button type="submit" class="btn btn-default">Submit</button>
-											<button type="reset" class="btn btn-default">Reset</button>
-										</form>
-										</modal>
+										<?php echo $this->render('inc/_popup', ['model' => $searchModel]); ?>
 									</div>
 								</div>
 							</div>
-	
 							<div class="calendar" ng-model="eventSources" calendar="myCalendar1" ui-calendar="uiConfig.calendar"></div>
-
 						</tabset>
 					</div>
 				</div>
