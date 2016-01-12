@@ -12,7 +12,7 @@ class CommonVendor extends AssetBundle
     public $css = [
     		'works/calendar/css/fullcalendar.css',
     		'works/calendar/css/fullcalendar.print.css',
-    		'works/calendar/css/fullcalendar.min.css',
+//     		'works/calendar/css/fullcalendar.min.css',
     ];
     
     public $js = [

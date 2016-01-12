@@ -10,28 +10,25 @@ $this->title = 'Create Event';
 $this->params['breadcrumbs'][] = ['label' => 'Events', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<div id="calendar"/>
 <div ng-app="calendarDemoApp" class="event-create">
-
-<div ng-controller="MainCtrl" class="container">
-  <h1>Modal example</h1>
-  <button ng-click="toggleModal()" class="btn btn-default">Open modal</button>
-    
-  <modal title="Login form" visible="showModal">
-    <form role="form">
-      <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email" />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password" />
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-  </modal>
-</div>
+	<div ng-controller="MainCtrl" class="container">
+	  <h1>Modal example</h1>
+	  <button ng-click="toggleModal()" class="btn btn-default">Open modal</button>
+	    
+	  <modal title="Login form" visible="showModal" style="    display: none;">
+	    <form role="form">
+	      <div class="form-group">
+	        <label for="email">Email address</label>
+	        <input type="email" class="form-control" id="email" placeholder="Enter email" />
+	      </div>
+	      <div class="form-group">
+	        <label for="password">Password</label>
+	        <input type="password" class="form-control" id="password" placeholder="Password" />
+	      </div>
+	      <button type="submit" class="btn btn-default">Submit</button>
+	    </form>
+	  </modal>
+	</div>
 
     <div role="main">
         <section id="directives-calendar" ng-controller="CalendarCtrl">
@@ -40,46 +37,6 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="well">
                 <div class="row-fluid">
-                <!-- 
-                    <div class="span4">
-                        
-                        <h3>What?</h3>
-
-                        <p>Attach Angular objects to a calendar.</p>
-                        <p>Show the data binding between two differnet calendars using the same event sources.</p>
-
-                        <h3>Why?</h3>
-
-                        <p>Why Not?</p>
-                         
-                        <div class="btn-group calTools">
-                        
-                          <button class="btn" ng-click="changeLang()">
-                            {{changeTo}}
-                          </button>              
-                          <button class="btn" ng-click="addRemoveEventSource(eventSources,eventSource)">
-                            Toggle Source
-                          </button>
-                       
-                          <button type="button" class="btn btn-primary" ng-click="addEvent()">
-                            Add Event
-                          </button>
-                           
-                        </div>
-                        
-                        
-                        <ul class="unstyled">
-                            <li ng-repeat="e in events">
-                                <div class="alert alert-info">
-                                    <a class="close" ng-click="remove($index)"><i class="icon-remove"></i></a>
-                                    <b> <input ng-model="e.title"></b> 
-                                    {{e.start | date:"MMM dd"}} - {{e.end | date:"MMM dd"}}
-                                </div>
-                            </li>
-                        </ul>
-                         
-                    </div>
-                    -->
                     <div class="span12">
                         <tabset>
                            <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
