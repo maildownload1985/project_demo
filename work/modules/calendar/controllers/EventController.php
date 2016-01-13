@@ -80,6 +80,24 @@ class EventController extends CeController
     }
 
     /**
+     * @author          Le Nhan Hau
+     * @created date    2015/01/13
+     * 
+     * get calendar
+     */
+    public function actionCalendar() {
+        $this->layout=false;
+        header('Content-type: application/json');
+        $calendars = array(
+            array(
+                'title' => 'Long Event',
+                'start' => '2016-01-04'
+            )
+        );
+        echo json_encode($calendars);
+    }
+    
+    /**
      * Updates an existing event model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
