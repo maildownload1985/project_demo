@@ -80,7 +80,6 @@ class EventController extends CeController
     }
 
     /**
-     * @author          Le Nhan Hau
      * @created date    2015/01/13
      * 
      * get calendar
