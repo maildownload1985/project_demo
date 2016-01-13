@@ -1,15 +1,70 @@
 <div class="tab-pane active" id="{{contentBaseId}}-1">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-3">
-						<h3>Column 1</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-					</div>
-					<div class="col-sm-3">
-						<h3>Column 2</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco
-							laboris...</p>
+			<div class="accsection">
+				<div class="topwrap">
+					<div class="row">
+						<div class="container">
+							<div class='col-md-6'>
+								<h4><?= Yii::t('app', 'Department');?></h4>
+								<div class="form-group">
+								<div>
+									<label class="">
+										<input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+									</label>
+								</div>
+								<div>
+									<label class="">
+										<input type="checkbox" id="inlineCheckbox1" value="option1"> 12
+									</label>
+								</div>
+								<div>
+									<label class="">
+										<input type="checkbox" id="inlineCheckbox1" value="option1"> 13
+									</label>
+								</div>
+								<div>
+									<label class="">
+										<input type="checkbox" id="inlineCheckbox1" value="option1"> 14
+									</label>
+								</div>
+								</div>
+								
+							</div>
+						</div>
+
+						<div class="container">
+							<div class='col-md-6'>
+								<h4><?= Yii::t('app', 'List of employee');?></h4>
+								<div class="form-group">
+									<div>
+										<label class="">
+											<input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="container">
+							<div class='col-md-6'>
+								<h4><?= Yii::t('app', 'List of employee');?></h4>
+								<div class="form-group">
+									<div>
+										<label class="">
+											<input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="container">
+							<div class='col-md-6'>
+								<p>
+								  <button class="btn btn-large btn-primary" type="button">Large button</button>
+								  <button class="btn btn-large" type="button">Large button</button>
+								</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

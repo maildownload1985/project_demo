@@ -99,6 +99,15 @@
 								
 							</div>
 						</div>
+
+						<div class="container">
+							<div class='col-md-6'>
+								<p>
+								  <button class="btn btn-large btn-primary" type="button">Large button</button>
+								  <button class="btn btn-large" type="button">Large button</button>
+								</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
