@@ -70,7 +70,7 @@
 							<div class='col-md-6'>
 								<h4><?= Yii::t('app', 'Files');?></h4>
 								<div class="form-group">
-								<input type='file' class="form-control" />
+								<input class="file" type="file" multiple data-preview-file-type="any" data-upload-url="#">
 								</div>
 							</div>
 						</div>
@@ -79,9 +79,15 @@
 							<div class='col-md-6'>
 								<h4><?= Yii::t('app', 'Calendar');?></h4>
 								<div class="form-group">
-								<input type="file" class="filestyle" data-buttonText="Find">
+								<input class="file" type="file" multiple data-preview-file-type="any" data-upload-url="#">
 								</div>
 								
+							</div>
+						</div>
+						
+						<div class="container">
+							<div class='col-md-6'>
+    							<?= $form->field($event, 'is_public')->checkbox() ?>
 							</div>
 						</div>
 						

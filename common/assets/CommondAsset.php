@@ -18,11 +18,11 @@ class CommondAsset extends AssetBundle
         'plugins/iCheck/flat/blue.css',
         'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
         'css/site.css',
-    		
     ];
     
     public $js = [
     	'js/jquery.js',
+    	'js/jquery.min.js',
         'js/bootstrap/bootstrap.min.js',
         'js/jquery-ui.min.js',
         'js/raphael-min.js',
