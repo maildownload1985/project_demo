@@ -44,7 +44,7 @@
 							</div>
 	
 							<div class='col-md-3'>
-								<?php echo $form->field($event, 'name')->dropDownList(['a' => 'Item A', 'b' => 'Item B', 'c' => 'Item C']); ?>
+								<?php echo $form->field($event, 'name')->dropDownList(['a' => 'Item A', 'b' => 'Item B', 'c' => 'Item C'])->label(false); ?>
 							</div>
 						</div>
 						
@@ -79,14 +79,14 @@
 							<div class='col-md-6'>
 								<h4><?= Yii::t('app', 'Calendar');?></h4>
 								<div class="form-group">
-								<input type='file' class="form-control" />
+								<input type="file" class="filestyle" data-buttonText="Find">
 								</div>
 								
 							</div>
 						</div>
-
+						
 						<div class="container">
-							<div class='col-md-6'>
+							<div class='col-md-6 form-inline'>
 								<p>
 								  <button class="btn btn-large btn-primary" type="button">Large button</button>
 								  <button class="btn btn-large" type="button">Large button</button>

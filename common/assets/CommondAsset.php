@@ -35,6 +35,7 @@ class CommondAsset extends AssetBundle
         'js/angular/angular.js',
         'js/angular/angular-locale_vi-vn.js',
         'js/angular/ui-bootstrap-tpls-0.9.0.js',
+    	'js/bootstrap-filestyle.js',
     ];
     
     public $depends = [
