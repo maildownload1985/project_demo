@@ -17,6 +17,9 @@ $this->params ['breadcrumbs'] [] = [
 $this->params ['breadcrumbs'] [] = $this->title;
 ?>
 
+
+
+
 <div ng-app="calendarDemoApp" class="event-create">
 	<div role="main">
 		<section id="directives-calendar" ng-controller="CalendarCtrl">
