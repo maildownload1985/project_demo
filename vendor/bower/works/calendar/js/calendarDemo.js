@@ -116,6 +116,15 @@ calendarDemoApp.controller('CalendarCtrl',
         element.attr({'tooltip': event.title,
                       'tooltip-append-to-body': true});
         $compile(element)($scope);
+        
+        /*$('td.fc-day').bind('dblclick', function() {
+        	//alert('double click!');
+        	//$('.modal').modal('show')  
+        });*/
+ 	
+    	$('.fc-content-skeleton td').bind('dblclick', function() {
+    		$('.modal').modal('show')  
+    	});
     };
     /* config object */
     $scope.uiConfig = {
