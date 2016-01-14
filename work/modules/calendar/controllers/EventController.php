@@ -5,6 +5,8 @@
  */
 namespace work\modules\calendar\controllers;
 
+use common\models\work\Department;
+
 use Yii;
 use common\models\work\Event;
 use common\models\work\Invitation;
@@ -39,14 +41,15 @@ class EventController extends CeController
         $model_event = new Event();
         $model_inviation = new Invitation();
         $model_remind = new Remind();
+        $model_department = new Department();
         
-        $model = new eventSearch();
-        
+//         $model_department = $model_event->getDepartmentNameCheckBox();
         
         return $this->render('index', [
-        		'model_event' => $model_event,
-        		'model_inviation' => $model_inviation,
-        		'model_remind' => $model_remind,
+	        		'model_event' => $model_event,
+	        		'model_inviation' => $model_inviation,
+	        		'model_remind' => $model_remind,
+	        		'model_department' => $model_department
         		]);
     }
 

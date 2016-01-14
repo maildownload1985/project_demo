@@ -1,3 +1,7 @@
+<?php 
+use common\models\work\Remind; 
+use yii\helpers\Html;
+?>
 <div class="tab-pane active" id="{{contentBaseId}}-1">
 <div class="accsection">
 				<div class="topwrap">
@@ -40,11 +44,11 @@
 						
 						<div class="container">
 							<div class='col-md-3'>
-    							<?= $form->field($event, 'is_public')->checkbox() ?>
+    							<?= $form->field($model_remind, 'owner_id')->checkbox() ?>
 							</div>
 	
 							<div class='col-md-3'>
-								<?php echo $form->field($event, 'name')->dropDownList(['a' => 'Item A', 'b' => 'Item B', 'c' => 'Item C'])->label(false); ?>
+								<?= $form->field($model_remind, 'minute_before')->dropDownList(Remind::getTimeRemind(), ['options'=>['30' => ['Selected'=>true]]], ['prompt'=>  Yii::t('app', 'Please choose your type')])->label(false); ?>
 							</div>
 						</div>
 						
@@ -94,8 +98,8 @@
 						<div class="container">
 							<div class='col-md-6 form-inline align_right'>
 								<p>
-								  <button class="btn btn-large btn-primary" type="button"><?= Yii::t('app', 'Submit');?></button>
-								  <button class="btn btn-large" type="button"><?= Yii::t('app', 'Close');?></button>
+								  <?= Html::submitButton(Yii::t('app', 'Submit'), ['class'=> 'btn btn-primary']) ;?>
+								  <?= Html::submitButton(Yii::t('app', 'Close'), ['class'=> 'btn btn-large']) ;?>
 								</p>
 							</div>
 						</div>

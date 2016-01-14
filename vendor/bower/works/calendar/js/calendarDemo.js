@@ -113,7 +113,6 @@ calendarDemoApp.controller('CalendarCtrl',
     };
      /* Render Tooltip */
     $scope.eventRender = function( event, element, view ) {
-    	alert(33);
         element.attr({'tooltip': event.title,
                       'tooltip-append-to-body': true});
         $compile(element)($scope);

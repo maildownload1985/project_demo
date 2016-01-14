@@ -16,6 +16,7 @@ $this->params ['breadcrumbs'] [] = [
 
 $this->params ['breadcrumbs'] [] = $this->title;
 ?>
+
 <div ng-app="calendarDemoApp" class="event-create">
 	<div role="main">
 		<section id="directives-calendar" ng-controller="CalendarCtrl">
@@ -40,7 +41,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 								<div class="col-xs-6 col-md-4">
 									<div ng-controller="MainCtrl" class="container">
 										<button ng-click="toggleModal()" class="btn btn-primary"><?= Yii::t('app', 'Add Event');?></button>
-										<?= $this->render('inc/_popup', ['event' => $model_event, 'model_remind' => $model_remind, 'inviation' => $model_inviation]) ?>
+										<?= $this->render('inc/_popup', ['event' => $model_event, 'model_remind' => $model_remind, 'inviation' => $model_inviation, 'model_department' => $model_department]) ?>
 									</div>
 								</div>
 							</div>

@@ -19,7 +19,7 @@ use Yii;
  * @property string $datetime_created
  * @property string $lastup_datetime
  * @property string $lastup_employee_id
- * @property boolean $disabled
+ * @property boolean $is_remind
  */
 class Remind extends \yii\db\ActiveRecord
 {
@@ -40,7 +40,7 @@ class Remind extends \yii\db\ActiveRecord
             [['employee_id', 'owner_id', 'remind_datetime', 'minute_before', 'repeated_time', 'datetime_created', 'lastup_datetime', 'lastup_employee_id'], 'integer'],
             [['owner_table', 'repeated_time'], 'required'],
             [['content'], 'string'],
-            [['is_snoozing', 'disabled'], 'boolean'],
+            [['is_snoozing', 'is_remind'], 'boolean'],
             [['owner_table'], 'string', 'max' => 50]
         ];
     }
@@ -63,7 +63,23 @@ class Remind extends \yii\db\ActiveRecord
             'datetime_created' => 'Datetime Created',
             'lastup_datetime' => 'Lastup Datetime',
             'lastup_employee_id' => 'Lastup Employee ID',
-            'disabled' => 'Disabled',
+            'is_remind' => 'is_remind',
         ];
+    }
+    
+    /**
+     * @description show option time 10 20 30 40 50 60
+     * @author minhtha
+     * @return array time
+     */
+    public static function getTimeRemind(){
+    	return [
+    	'10' => '10',
+    	'20' => '20',
+    	'30' => '30',
+    	'40' => '40',
+    	'50' => '50',
+    	'60' => '60',
+    	];
     }
 }
