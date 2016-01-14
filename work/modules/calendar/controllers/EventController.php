@@ -5,10 +5,9 @@
  */
 namespace work\modules\calendar\controllers;
 
-use common\models\work\Invitation;
-
 use Yii;
-use common\models\calendar\event;
+use common\models\work\Event;
+use common\models\work\Invitation;
 use work\modules\calendar\models\eventSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -36,15 +35,21 @@ class EventController extends CeController
      */
     public function actionIndex()
     {
-    	$model = new Invitation();
 //         $searchModel = new eventSearch();
 //         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 //         return $this->render('index', [
 //             'searchModel' => $searchModel,
 //             'dataProvider' => $dataProvider,
 //         ]);
+        $model_event = new Event();
+        $model_inviation = new Invitation();
+        
         $model = new eventSearch();
+        
+        
         return $this->render('index', [
+        		'model_event' => $model_event,
+        		'model_inviation' => $model_inviation,
         		'model' => $model,
         		]);
     }
