@@ -16,15 +16,6 @@ $this->params ['breadcrumbs'] [] = [
 
 $this->params ['breadcrumbs'] [] = $this->title;
 ?>
-
-        <div class="container kv-main">
-            <form enctype="multipart/form-data">
-                <div class="form-group">
-                    <input id="file-5" class="file" type="file" multiple data-preview-file-type="any" data-upload-url="#">
-                </div>
-            </form>
-              <br>
-        </div>
 <div ng-app="calendarDemoApp" class="event-create">
 	<div role="main">
 		<section id="directives-calendar" ng-controller="CalendarCtrl">
