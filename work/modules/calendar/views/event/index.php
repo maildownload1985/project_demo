@@ -40,7 +40,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 								<div class="col-xs-6 col-md-4">
 									<div ng-controller="MainCtrl" class="container">
 										<button ng-click="toggleModal()" class="btn btn-primary"><?= Yii::t('app', 'Add Event');?></button>
-										<?= $this->render('inc/_popup', ['event' => $model_event, 'inviation' => $model_inviation]) ?>
+										<?= $this->render('inc/_popup', ['event' => $model_event, 'model_remind' => $model_remind, 'inviation' => $model_inviation]) ?>
 									</div>
 								</div>
 							</div>

@@ -91,9 +91,11 @@
     margin-bottom: 5px;
 }
 .button_no_background {
-
     background: transparent;
     border: none !important;
+}
+.align_right{
+	text-align: right;
 }
 .file-preview-frame {
     display: table;

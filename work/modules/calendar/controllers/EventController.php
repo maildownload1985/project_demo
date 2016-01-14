@@ -12,6 +12,7 @@ use work\modules\calendar\models\eventSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\controllers\CeController;
+use common\models\work\Remind;
 /**
  * EventController implements the CRUD actions for event model.
  */
@@ -35,14 +36,9 @@ class EventController extends CeController
      */
     public function actionIndex()
     {
-//         $searchModel = new eventSearch();
-//         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-//         return $this->render('index', [
-//             'searchModel' => $searchModel,
-//             'dataProvider' => $dataProvider,
-//         ]);
         $model_event = new Event();
         $model_inviation = new Invitation();
+        $model_remind = new Remind();
         
         $model = new eventSearch();
         
@@ -50,7 +46,7 @@ class EventController extends CeController
         return $this->render('index', [
         		'model_event' => $model_event,
         		'model_inviation' => $model_inviation,
-        		'model' => $model,
+        		'model_remind' => $model_remind,
         		]);
     }
 

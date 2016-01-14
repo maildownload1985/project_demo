@@ -92,10 +92,10 @@
 						</div>
 						
 						<div class="container">
-							<div class='col-md-6 form-inline'>
+							<div class='col-md-6 form-inline align_right'>
 								<p>
-								  <button class="btn btn-large btn-primary" type="button">Large button</button>
-								  <button class="btn btn-large" type="button">Large button</button>
+								  <button class="btn btn-large btn-primary" type="button"><?= Yii::t('app', 'Submit');?></button>
+								  <button class="btn btn-large" type="button"><?= Yii::t('app', 'Close');?></button>
 								</p>
 							</div>
 						</div>
