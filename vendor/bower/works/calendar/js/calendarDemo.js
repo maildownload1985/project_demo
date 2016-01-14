@@ -122,7 +122,10 @@ calendarDemoApp.controller('CalendarCtrl',
         	//$('.modal').modal('show')  
         });*/
  	
-    	$('.fc-content-skeleton td').bind('dblclick', function() {
+    	$('td.fc-day').bind('dblclick', function() {
+    		$('.modal').modal('show')  
+    	});
+    	$('td.fc-day-number').bind('dblclick', function() {
     		$('.modal').modal('show')  
     	});
     };
