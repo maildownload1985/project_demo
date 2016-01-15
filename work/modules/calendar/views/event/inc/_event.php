@@ -85,7 +85,7 @@ use common\models\work\Event;
 							<div class='col-md-6'>
 								<h4><?= Yii::t('app', 'Calendar');?></h4>
 								<div class="form-group">
-									<?= $form->field($model_calendar, 'name')->dropDownList(Event::getCalendarOption(), ['options'=>['30' => ['Selected'=>true]]], ['prompt'=>  Yii::t('app', 'Please choose your type')])->label(false); ?>
+									<?= $form->field($model_calendar, 'name')->dropDownList(Event::getCalendarOption(), ['prompt'=>  Yii::t('app', 'Please choose your type')])->label(false); ?>
 								</div>
 								
 							</div>

@@ -44,10 +44,12 @@ class Event extends CeActivieRecord
     public function rules()
     {
         return [
-            [['calendar_id', 'employee_id', 'start_datetime', 'end_datetime', 'datetime_created', 'lastup_datetime', 'lastup_employee_id'], 'integer'],
-            [['employee_id', 'name', 'description', 'description_parse'], 'required'],
+            [['calendar_id', 'employee_id', 'datetime_created', 'lastup_datetime', 'lastup_employee_id'], 'integer'],
+            [['employee_id', 'name', 'description', 'description_parse', 'start_datetime', 'end_datetime', 'address' ], 'required'],
             [['description', 'description_parse'], 'string'],
             [['is_public', 'disabled'], 'boolean'],
+            [['start_datetime', 'end_datetime'], 'safe'],
+            ['start_datetime','compare','compareAttribute'=>'end_datetime','operator'=>'>'],
             [['name', 'address'], 'string', 'max' => 255]
         ];
     }

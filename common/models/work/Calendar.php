@@ -2,6 +2,8 @@
 
 namespace common\models\work;
 
+use common\components\db\CeActivieRecord;
+
 use Yii;
 
 /**
@@ -15,7 +17,7 @@ use Yii;
  * @property string $lastup_employee_id
  * @property boolean $disabled
  */
-class Calendar extends \yii\db\ActiveRecord
+class Calendar extends CeActivieRecord
 {
     /**
      * @inheritdoc
@@ -46,7 +48,7 @@ class Calendar extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Event Calendar',
             'description' => 'Description',
             'datetime_created' => 'Datetime Created',
             'lastup_datetime' => 'Lastup Datetime',
