@@ -95,6 +95,10 @@ class EventController extends CeController
             array(
                 'title' => 'Long Event',
                 'start' => '2016-01-04'
+            ),
+            array(
+                'title' => 'test test test',
+                'start' => '2016-02-04'
             )
         );
         echo json_encode($calendars);
