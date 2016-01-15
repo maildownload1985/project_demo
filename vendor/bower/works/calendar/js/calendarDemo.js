@@ -58,8 +58,17 @@ calendarDemoApp.controller('CalendarCtrl',
       $('td.fc-day-number').bind('dblclick', function() {
     	  $('.modal').modal('show')  
       });
+      //$("#event-start_datetime").datepicker().attr('readonly','readonly');
+      //$("#event-end_datetime").datepicker().attr('readonly','readonly');
+      $('#event-start_datetime').attr('readonly', true);
+      $('#datetimepicker_start').datetimepicker({
+    	    ignoreReadonly: true
+    	  });
+      $('#event-end_datetime').attr('readonly', true);
+      $('#datetimepicker_end').datetimepicker({
+    	    ignoreReadonly: true
+    	  });
     };
-    console.log($("#calendar").fullCalendar('getDate'));
     $scope.calEventsExt = {
        color: '#f00',
        textColor: 'yellow',
