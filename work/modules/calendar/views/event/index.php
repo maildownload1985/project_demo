@@ -1,8 +1,4 @@
 <?php
-use yii\helpers\Html;
-use yii\grid\GridView;
-use yii\widgets\ActiveForm;
-
 /* @var $this yii\web\View */
 /* @var $model common\models\calendar\event */
 
