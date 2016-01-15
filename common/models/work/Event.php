@@ -79,4 +79,9 @@ class Event extends CeActivieRecord
     {
     	return ArrayHelper::map(Department::find()->asArray()->all(), 'id', 'name');
     }
+    
+    public static function getCalendarOption()
+    {
+    	return ArrayHelper::map(Calendar::find()->asArray()->all(), 'id', 'name');
+    }
 }

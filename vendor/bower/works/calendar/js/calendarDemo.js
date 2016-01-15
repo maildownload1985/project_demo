@@ -58,17 +58,8 @@ calendarDemoApp.controller('CalendarCtrl',
       $('td.fc-day-number').bind('dblclick', function() {
     	  $('.modal').modal('show')  
       });
-      //$("#event-start_datetime").datepicker().attr('readonly','readonly');
-      //$("#event-end_datetime").datepicker().attr('readonly','readonly');
-      $('#event-start_datetime').attr('readonly', true);
-      $('#datetimepicker_start').datetimepicker({
-    	    ignoreReadonly: true
-    	  });
-      $('#event-end_datetime').attr('readonly', true);
-      $('#datetimepicker_end').datetimepicker({
-    	    ignoreReadonly: true
-    	  });
     };
+    console.log($("#calendar").fullCalendar('getDate'));
     $scope.calEventsExt = {
        color: '#f00',
        textColor: 'yellow',
@@ -316,3 +307,39 @@ calendarDemoApp.directive('modal', function () {
       }
     };
   });
+
+
+// check all checkbox
+
+calendarDemoApp.controller("ctrl", function($scope){
+	  
+	  $scope.options = [
+	    {value:'Option1', selected:true}, 
+	    {value:'Option2', selected:false}
+	  ];
+	  
+	  $scope.toggleAll = function() {
+	     var toggleStatus = !$scope.isAllSelected;
+	     angular.forEach($scope.options, function(itm){ itm.selected = toggleStatus; });
+	   
+	  }
+	  
+	  $scope.optionToggled = function(){
+	    $scope.isAllSelected = $scope.options.every(function(itm){ return itm.selected; })
+	  }
+	});
+
+//calendarDemoApp.controller("checkboxController", function checkboxController($scope) {
+//	$scope.digest();
+//	$scope.checkAll = function () {
+//	    if ($scope.selectedAll) {
+//	        $scope.selectedAll = true;
+//	    } else {
+//	        $scope.selectedAll = false;
+//	    }
+//	    angular.forEach($scope.Items, function (item) {
+//	        item.Selected = $scope.selectedAll;
+//	    });
+//
+//	};
+//	});
