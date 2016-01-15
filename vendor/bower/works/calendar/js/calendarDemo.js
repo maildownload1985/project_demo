@@ -51,8 +51,15 @@ calendarDemoApp.controller('CalendarCtrl',
       var events = [{title: 'Feed Me ' + m,start: s + (50000),end: s + (100000),allDay: false, className: ['customFeed']}];
       //callback(events);
       callback($scope.events);
+      
+      $('td.fc-day').bind('dblclick', function() {
+    	  $('.modal').modal('show')  
+      });
+      $('td.fc-day-number').bind('dblclick', function() {
+    	  $('.modal').modal('show')  
+      });
     };
-
+    console.log($("#calendar").fullCalendar('getDate'));
     $scope.calEventsExt = {
        color: '#f00',
        textColor: 'yellow',
@@ -130,6 +137,12 @@ calendarDemoApp.controller('CalendarCtrl',
     		$('.modal').modal('show')  
     	});
     };
+    /* Bind date to input  */
+    $scope.dayClick = function( date, jsEvent, view, resourceObj ) { 
+    	//alert('Date: ' + date.format());
+    	$('#event-start_datetime').val(date.format());
+    };
+
     /* config object */
     $scope.uiConfig = {
       calendar:{
@@ -143,7 +156,8 @@ calendarDemoApp.controller('CalendarCtrl',
         eventClick: $scope.alertOnEventClick,
         eventDrop: $scope.alertOnDrop,
         eventResize: $scope.alertOnResize,
-        eventRender: $scope.eventRender
+        eventRender: $scope.eventRender,
+        dayClick: $scope.dayClick
       }
     };
 
