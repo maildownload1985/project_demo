@@ -15,6 +15,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\controllers\CeController;
 use common\models\work\Remind;
+use common\models\work\Calendar;
 /**
  * EventController implements the CRUD actions for event model.
  */
@@ -42,6 +43,7 @@ class EventController extends CeController
         $model_inviation = new Invitation();
         $model_remind = new Remind();
         $model_department = new Department();
+        $model_calendar = new Calendar();
         
 //         $model_department = $model_event->getDepartmentNameCheckBox();
         
@@ -49,7 +51,8 @@ class EventController extends CeController
 	        		'model_event' => $model_event,
 	        		'model_inviation' => $model_inviation,
 	        		'model_remind' => $model_remind,
-	        		'model_department' => $model_department
+	        		'model_department' => $model_department,
+        			'model_calendar' => $model_calendar
         		]);
     }
 
@@ -95,7 +98,16 @@ class EventController extends CeController
             array(
                 'title' => 'Long Event',
                 'start' => '2016-01-04'
-            )
+            ),
+            array(
+                'title' => 'test test test',
+                'start' => '2016-02-04'
+            ),
+        		array(
+        				'title' => 'test test test',
+        				'start' => '2016-04-04',
+        				'end' => '2016-04-05'
+        		)
         );
         echo json_encode($calendars);
     }
