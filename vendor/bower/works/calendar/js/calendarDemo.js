@@ -139,8 +139,23 @@ calendarDemoApp.controller('CalendarCtrl',
     };
     /* Bind date to input  */
     $scope.dayClick = function( date, jsEvent, view, resourceObj ) { 
-    	//alert('Date: ' + date.format());
-    	$('#event-start_datetime').val(date.format());
+    	var current_date = new Date;
+    	var current_hours = current_date.getHours();
+    	if (current_hours < 10) {
+    		current_hours = "0" + current_hours;
+        }
+    	var ampm = (current_hours >= 12) ? "PM" : "AM";
+    	var current_minute = current_date.getMinutes();
+    	if (current_minute < 10) {
+    		current_minute = "0" + current_minute;
+        }
+    	var current_time = current_hours + ":" + current_minute + ' ' + ampm;
+    	var get_date = date.format();
+    	var date = new Date(get_date);
+    	var format_date = ("0" + (date.getMonth() + 1)).slice(-2) + '/' + ("0" + date.getDate()).slice(-2) + '/' +  date.getFullYear();
+    	var hours = date.getHours();
+    	//$('#event-start_datetime').val(date.format());
+    	$('#event-start_datetime').val(format_date + ' ' + current_time);
     };
 
     /* config object */
