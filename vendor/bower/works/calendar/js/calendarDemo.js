@@ -27,7 +27,7 @@ calendarDemoApp.controller('CalendarCtrl',
       {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
     ];*/
     $scope.events = [];
-    $http.get('http://dev.centeroffices.com/work/web/index.php?r=calendar/event/calendar').success(function(data){  //fetch new events from server, and push in array
+    $http.get(window.location.host + '/work/web/index.php?r=calendar/event/calendar').success(function(data){  //fetch new events from server, and push in array
     	$scope.schedule = data;
     		for(var i=0;i<data.length;i++)
     			{
@@ -49,7 +49,8 @@ calendarDemoApp.controller('CalendarCtrl',
       var e = new Date(end).getTime() / 1000;
       var m = new Date(start).getMonth();
       var events = [{title: 'Feed Me ' + m,start: s + (50000),end: s + (100000),allDay: false, className: ['customFeed']}];
-      callback(events);
+      //callback(events);
+      callback($scope.events);
     };
 
     $scope.calEventsExt = {
