@@ -16,26 +16,6 @@ $this->params ['breadcrumbs'] [] = $this->title;
 
 
 <div ng-app="calendarDemoApp" class="event-create">
-
-
-<div class="container">
-					<h4><?= Yii::t('app', 'Department');?></h4>
-					<div class='col-md-6'>
-						<div ng-controller="list_employee">
-							<ui-select multiple ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="select2" ng-disabled="disabled" > 
-								<ui-select-match placeholder="Select person..." width="500px">{{$item.name}} &lt;{{$item.email}}&gt;</ui-select-match>
-								
-								<ui-select-choices group-by="someGroupFn" repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
-									<div ng-bind-html="person.name | highlight: $select.search"></div>
-									<small> 
-										email: {{person.email}} age:  <span ng-bind-html="''+person.age | highlight: $select.search"></span>
-									</small> 
-								</ui-select-choices> 
-							</ui-select>
-							<p>Selected: {{multipleDemo.selectedPeopleWithGroupBy}}</p>
-						</div>
-					</div>
-				</div>
 	<div role="main">
 		<section id="directives-calendar" ng-controller="CalendarCtrl">
 			<div class="well">
