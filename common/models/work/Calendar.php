@@ -7,25 +7,24 @@ use common\components\db\CeActivieRecord;
 use Yii;
 
 /**
- * This is the model class for table "invitation".
+ * This is the model class for table "calendar".
  *
- * @property string $id
- * @property string $event_id
- * @property string $owner_id
- * @property string $owner_table
+ * @property integer $id
+ * @property string $name
+ * @property string $description
  * @property string $datetime_created
  * @property string $lastup_datetime
  * @property string $lastup_employee_id
  * @property boolean $disabled
  */
-class Invitation extends CeActivieRecord
+class Calendar extends CeActivieRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'invitation';
+        return 'calendar';
     }
 
     /**
@@ -34,10 +33,11 @@ class Invitation extends CeActivieRecord
     public function rules()
     {
         return [
-            [['event_id', 'owner_id'], 'required'],
-            [['event_id', 'owner_id', 'datetime_created', 'lastup_datetime', 'lastup_employee_id'], 'integer'],
+            [['name', 'description'], 'required'],
+            [['description'], 'string'],
+            [['datetime_created', 'lastup_datetime', 'lastup_employee_id'], 'integer'],
             [['disabled'], 'boolean'],
-            [['owner_table'], 'string', 'max' => 99]
+            [['name'], 'string', 'max' => 255]
         ];
     }
 
@@ -48,9 +48,8 @@ class Invitation extends CeActivieRecord
     {
         return [
             'id' => 'ID',
-            'event_id' => 'Event ID',
-            'owner_id' => 'Owner ID',
-            'owner_table' => 'Owner Table',
+            'name' => 'Event Calendar',
+            'description' => 'Description',
             'datetime_created' => 'Datetime Created',
             'lastup_datetime' => 'Lastup Datetime',
             'lastup_employee_id' => 'Lastup Employee ID',

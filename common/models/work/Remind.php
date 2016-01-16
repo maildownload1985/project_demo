@@ -2,6 +2,8 @@
 
 namespace common\models\work;
 
+use common\components\db\CeActivieRecord;
+
 use Yii;
 
 /**
@@ -21,8 +23,9 @@ use Yii;
  * @property string $lastup_employee_id
  * @property boolean $is_remind
  */
-class Remind extends \yii\db\ActiveRecord
+class Remind extends CeActivieRecord
 {
+	public $is_remind;
     /**
      * @inheritdoc
      */
@@ -38,7 +41,7 @@ class Remind extends \yii\db\ActiveRecord
     {
         return [
             [['employee_id', 'owner_id', 'remind_datetime', 'minute_before', 'repeated_time', 'datetime_created', 'lastup_datetime', 'lastup_employee_id'], 'integer'],
-            [['owner_table', 'repeated_time'], 'required'],
+            [['owner_table', 'repeated_time', 'minute_before'], 'required'],
             [['content'], 'string'],
             [['is_snoozing', 'is_remind'], 'boolean'],
             [['owner_table'], 'string', 'max' => 50]

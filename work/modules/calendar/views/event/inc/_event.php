@@ -1,6 +1,8 @@
 <?php 
 use common\models\work\Remind; 
 use yii\helpers\Html;
+use common\models\work\Calendar;
+use common\models\work\Event;
 ?>
 <div class="tab-pane active" id="{{contentBaseId}}-1">
 <div class="accsection">
@@ -83,7 +85,7 @@ use yii\helpers\Html;
 							<div class='col-md-6'>
 								<h4><?= Yii::t('app', 'Calendar');?></h4>
 								<div class="form-group">
-								<input class="file" type="file" multiple data-preview-file-type="any" data-upload-url="#">
+									<?= $form->field($model_calendar, 'name')->dropDownList(Event::getCalendarOption(), ['prompt'=>  Yii::t('app', 'Please choose your type')])->label(false); ?>
 								</div>
 								
 							</div>
