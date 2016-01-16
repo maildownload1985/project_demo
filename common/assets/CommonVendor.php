@@ -23,7 +23,7 @@ class CommonVendor extends AssetBundle
     		'works/calendar/js/calendar.js',
     		'works/calendar/js/calendarDemo.js',
     		'works/calendar/js/fullcalendar.js',
-    		'works/calendar/js/fullcalendar.min.js',
+//     		'works/calendar/js/fullcalendar.min.js',
     		'works/calendar/js/gcal.js',
     		'works/calendar/js/moment.min.js',
     		

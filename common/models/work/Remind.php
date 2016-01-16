@@ -25,7 +25,7 @@ use Yii;
  */
 class Remind extends CeActivieRecord
 {
-	public $is_remind;
+	public $is_remind = true;
     /**
      * @inheritdoc
      */

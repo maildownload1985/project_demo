@@ -9,8 +9,8 @@ use kartik\widgets\ActiveForm;
 <modal title="<?= Yii::t('app', 'TITLE FORM');?>" visible="showModal" style="display: none;">
 	<?php $form = ActiveForm::begin(); ?>
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="#{{contentBaseId}}-1" data-toggle="tab"><?= Yii::t('app', 'Event');?></a></li>
-		<li><a href="#{{contentBaseId}}-2" data-toggle="tab"><?= Yii::t('app', 'Inviation');?></a></li>
+		<li class="active"><a href="#-1" data-toggle="tab"><?= Yii::t('app', 'Event');?></a></li>
+		<li><a href="#-2" data-toggle="tab"><?= Yii::t('app', 'Inviation');?></a></li>
 	</ul>
 	<div class="tab-content">
 	<br/>
