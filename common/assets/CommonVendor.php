@@ -16,6 +16,8 @@ class CommonVendor extends AssetBundle
     		
     		'works/calendar/css/datetimepicker/bootstrap-datetimepicker.css',
     		'works/calendar/css/fileinput.css',
+    		
+    		'works/calendar/css/employee.css',
     ];
     
     public $js = [
@@ -31,6 +33,8 @@ class CommonVendor extends AssetBundle
     		'works/calendar/js/datetimepicker/datetimeCustomize.js',
     		'works/calendar/js/fileinput.js',
     		
+    		'works/calendar/js/employee/angular-sanitize.js',
+    		'works/calendar/js/employee/select.js',
     ];
     
     public $depends = [
