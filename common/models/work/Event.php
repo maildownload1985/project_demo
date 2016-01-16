@@ -60,20 +60,20 @@ class Event extends CeActivieRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'calendar_id' => 'Calendar ID',
-            'employee_id' => 'Employee ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'description_parse' => 'Description Parse',
-            'address' => 'Address',
-            'start_datetime' => 'Start Datetime',
-            'end_datetime' => 'End Datetime',
-            'is_public' => 'Is Public',
-            'datetime_created' => 'Datetime Created',
-            'lastup_datetime' => 'Lastup Datetime',
-            'lastup_employee_id' => 'Lastup Employee ID',
-            'disabled' => 'Disabled',
+            'id' 				 => Yii::t('work', 'ID'),
+            'calendar_id' 		 => Yii::t('work', 'Calendar ID'),
+            'employee_id' 		 => Yii::t('work', 'Employee ID'),
+            'name' 				 => Yii::t('work','Name'),
+            'description' 		 => Yii::t('work', 'Description'),
+            'description_parse'  => Yii::t('work', 'Description Parse'),
+            'address' 			 => Yii::t('work', 'Address'),
+            'start_datetime' 	 => Yii::t('work', 'Start Datetime'),
+            'end_datetime' 		 => Yii::t('work', 'End Datetime'),
+            'is_public' 		 => Yii::t('work', 'Is Public'),
+            'datetime_created' 	 => Yii::t('work', 'Datetime Created'),
+            'lastup_datetime' 	 => Yii::t('work', 'Lastup Datetime'),
+            'lastup_employee_id' => Yii::t('work', 'Lastup Employee ID'),
+            'disabled' 			 => Yii::t('work', 'Disabled'),
         ];
     }
     

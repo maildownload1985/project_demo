@@ -47,14 +47,14 @@ class Invitation extends CeActivieRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'event_id' => 'Event ID',
-            'owner_id' => 'Owner ID',
-            'owner_table' => 'Owner Table',
-            'datetime_created' => 'Datetime Created',
-            'lastup_datetime' => 'Lastup Datetime',
-            'lastup_employee_id' => 'Lastup Employee ID',
-            'disabled' => 'Disabled',
+            'id' 				 => Yii::t('work', 'ID'),
+            'event_id' 			 => Yii::t('work', 'Event ID'),
+            'owner_id' 			 => Yii::t('work', 'Owner ID'),
+            'owner_table' 		 => Yii::t('work', 'Owner Table'),
+            'datetime_created'   => Yii::t('work', 'Datetime Created'),
+            'lastup_datetime' 	 => Yii::t('work', 'Lastup Datetime'),
+            'lastup_employee_id' => Yii::t('work', 'Lastup Employee ID'),
+            'disabled' 			 => Yii::t('work', 'Disabled'),
         ];
     }
 }

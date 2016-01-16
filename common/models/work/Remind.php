@@ -25,7 +25,7 @@ use Yii;
  */
 class Remind extends CeActivieRecord
 {
-	public $is_remind = true;
+	public $is_remind;
     /**
      * @inheritdoc
      */
@@ -54,19 +54,19 @@ class Remind extends CeActivieRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'employee_id' => 'Employee ID',
-            'owner_id' => 'Owner ID',
-            'owner_table' => 'Owner Table',
-            'content' => 'Content',
-            'remind_datetime' => 'Remind Datetime',
-            'minute_before' => 'Minute Before',
-            'repeated_time' => 'Repeated Time',
-            'is_snoozing' => 'Is Snoozing',
-            'datetime_created' => 'Datetime Created',
-            'lastup_datetime' => 'Lastup Datetime',
-            'lastup_employee_id' => 'Lastup Employee ID',
-            'is_remind' => 'is_remind',
+            'id' 				 => Yii::t('work', 'ID'),
+            'employee_id' 		 => Yii::t('work', 'Employee ID'),
+            'owner_id' 			 => Yii::t('work', 'Owner ID'),
+            'owner_table' 		 => Yii::t('work', 'Owner Table'),
+            'content' 			 => Yii::t('work', 'Content'),
+            'remind_datetime' 	 => Yii::t('work', 'Remind Datetime'),
+            'minute_before' 	 => Yii::t('work', 'Minute Before'),
+            'repeated_time' 	 => Yii::t('work', 'Repeated Time'),
+            'is_snoozing' 		 => Yii::t('work', 'Is Snoozing'),
+            'datetime_created'   => Yii::t('work', 'Datetime Created'),
+            'lastup_datetime' 	 => Yii::t('work', 'Lastup Datetime'),
+            'lastup_employee_id' => Yii::t('work', 'Lastup Employee ID'),
+            'is_remind' 	 	 => Yii::t('work', 'is_remind'),
         ];
     }
     

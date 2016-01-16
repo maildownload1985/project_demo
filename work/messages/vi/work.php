@@ -1,5 +1,31 @@
 <?php
 
 return [
-  'work' => 'Công việc'  
+    'ID' => 'No.',
+    'Event Calendar' => 'Event',
+    'Description' => 'Description',
+    'Datetime Created' => 'Datetime ',
+    'Lastup Datetime' => 'Lastup',
+    'Lastup Employee ID' => 'Employee',
+    'Disabled' => 'Disabled',
+    'Name' => 'Name',
+    'Description' => 'Description',
+    'Lastup Employee ID' => 'Employee',
+    'Calendar ID' => 'Calendar',
+    'Employee ID' => 'Employee',
+    'Description Parse' => 'Description',
+    'Address' => 'Address',
+    'Start Datetime' => 'Start Datetime',
+    'End Datetime' => 'nd Datetime',
+    'Is Public' => 'Is Public',
+    'Event ID' => 'Event',
+    'Owner ID' => 'Owner',
+    'Owner Table' => 'Owner',
+    'Content' => 'Content',
+    'Remind Datetime' => 'Remind',
+    'Minute Before' => 'Minute',
+    'Repeated Time' => 'Repeated',
+    'Is Snoozing' => 'Snoozing',
+    'Is Remind' => 'Is Remind',
 ];
+

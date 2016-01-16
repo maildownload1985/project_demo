@@ -47,13 +47,13 @@ class Calendar extends CeActivieRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Event Calendar',
-            'description' => 'Description',
-            'datetime_created' => 'Datetime Created',
-            'lastup_datetime' => 'Lastup Datetime',
-            'lastup_employee_id' => 'Lastup Employee ID',
-            'disabled' => 'Disabled',
+            'id' 				 => Yii::t('work', 'ID'),
+            'name' 				 => Yii::t('work', 'Event Calendar'),
+            'description' 		 => Yii::t('work', 'Description'),
+            'datetime_created' 	 => Yii::t('work', 'Datetime Created'),
+            'lastup_datetime' 	 => Yii::t('work', 'Lastup Datetime'),
+            'lastup_employee_id' => Yii::t('work', 'Lastup Employee ID'),
+            'disabled' 			 => Yii::t('work', 'Disabled'),
         ];
     }
 }

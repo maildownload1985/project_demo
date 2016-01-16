@@ -6,16 +6,20 @@ use kartik\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<modal title="<?= Yii::t('app', 'TITLE FORM');?>" visible="showModal" style="display: none;">
+<modal title="<?= Yii::t('app', 'TITLE FORM');?>" visible="showModal"
+	style="display: none;">
 	<?php $form = ActiveForm::begin(); ?>
-	<ul class="nav nav-tabs">
-		<li class="active"><a href="#-1" data-toggle="tab"><?= Yii::t('app', 'Event');?></a></li>
-		<li><a href="#-2" data-toggle="tab"><?= Yii::t('app', 'Inviation');?></a></li>
-	</ul>
-	<div class="tab-content">
-	<br/>
-		<?= $this->render('_event', ['form' => $form, 'event' => $event, 'model_remind' => $model_remind, 'model_calendar' => $model_calendar]) ?>
-		<?= $this->render('_inviation', ['form' => $form, 'inviation' => $inviation, 'model_department' => $model_department]) ?>
-	</div>
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#tab1" data-toggle="tab"><?= Yii::t('app', 'Event');?></a></li>
+			<li><a href="#tab2" data-toggle="tab"><?= Yii::t('app', 'Inviation');?></a></li>
+		</ul>
+
+		<div class="tab-content">
+			<br />
+			<?= $this->render('_event', ['form' => $form, 'event' => $event, 'model_remind' => $model_remind, 'model_calendar' => $model_calendar])?>
+				    
+			<?= $this->render('_inviation', ['form' => $form, 'inviation' => $inviation, 'model_department' => $model_department])?>
+		</div>
+		
 	<?php ActiveForm::end(); ?>
 </modal>
