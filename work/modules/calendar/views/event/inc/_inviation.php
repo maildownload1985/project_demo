@@ -18,10 +18,10 @@ use kartik\widgets\ActiveForm;
 				</div>
 				<div class="container">
 					<div class='col-md-6'>
-						<p>
+							
 							<?= Html::Button(Yii::t('app', 'Previous'), ['class'=> 'btn btn-primary btnPrevious']) ;?>
 							<?= Html::Button(Yii::t('app', 'Submit'), ['class'=> 'btn btn-large btn-primary']) ;?>
-							<?= Html::Button(Yii::t('app', 'Close'), ['class'=> 'btn btn-large']) ;?>
+							<?= Html::submitButton(Yii::t('app', 'Close'), ['class'=> 'btn btn-danger btn-default', 'data-dismiss' => 'modal']) ;?>
 						</p>
 					</div>
 				</div>
