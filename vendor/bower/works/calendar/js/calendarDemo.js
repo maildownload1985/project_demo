@@ -68,6 +68,21 @@ calendarDemoApp.controller('CalendarCtrl',
       $('#datetimepicker_end').datetimepicker({
     	    ignoreReadonly: true
     	  });
+      
+      $("#checkAll").change(function () {
+          $("#inviation_deparment_id input:checkbox").prop('checked', $(this).prop("checked"));
+      });
+   	
+      $("input[name='Department[id][]']").click(function(){
+      	//console.log($("input[name='Department[id][]']").length);
+      	//console.log($("input[name='Department[id][]']:checked").length);
+          if($("input[name='Department[id][]']").length == $("input[name='Department[id][]']:checked").length) {
+          	$("#checkAll").prop("checked", true);
+          } else {
+          	$("#checkAll").removeAttr("checked");;
+          }
+   
+      });
     };
     $scope.calEventsExt = {
        color: '#f00',
@@ -267,9 +282,40 @@ this.showModal = myModal.activate;
 
 
 calendarDemoApp.controller('MainCtrl', function ($scope) {
+	//console.log('aaaaaaa');
     $scope.showModal = false;
     $scope.toggleModal = function(){
         $scope.showModal = !$scope.showModal;
+        $("#checkAll").change(function () {
+        	//alert('check all');
+            $("#inviation_deparment_id input:checkbox").prop('checked', $(this).prop("checked"));
+        	//$("#inviation_deparment_id input:checkbox").attr("checked", "checked");
+        });
+        
+     	// if all checkbox are selected, check the selectall checkbox
+        // and viceversa
+        /*$("#inviation_deparment_id input[type='checkbox']:not(#checkAll)").click(function(){
+        	console.log('aaa');
+        	console.log($("#inviation_deparment_id input[type='checkbox']:not(#checkAll)"));
+        	console.log($("#inviation_deparment_id input[type='checkbox']:not(#checkAll):checked").length);
+            if($("#inviation_deparment_id input[type='checkbox']:not(#checkAll)").length == $("#inviation_deparment_id input[type='checkbox']:not(#checkAll):checked").length) {
+            	$("#checkAll").attr("checked", "checked");
+            } else {
+            	$("#checkAll").removeAttr("checked");;
+            }
+     
+        });*/
+        $("input[name='Department[id][]']").click(function(){
+        	//console.log($("input[name='Department[id][]']").length);
+        	//console.log($("input[name='Department[id][]']:checked").length);
+            if($("input[name='Department[id][]']").length == $("input[name='Department[id][]']:checked").length) {
+            	$("#checkAll").prop("checked", true);
+            } else {
+            	$("#checkAll").removeAttr("checked");;
+            }
+     
+        });
+        
     };
   });
 
