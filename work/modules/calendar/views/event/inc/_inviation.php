@@ -20,19 +20,21 @@ use kartik\widgets\ActiveForm;
 					<h4><?= Yii::t('app', 'Department');?></h4>
 					<div class='col-md-6'>
 						<div ng-controller="list_employee">
- <h3>Array of objects</h3>
-  <ui-select multiple ng-model="multipleDemo.selectedPeople" theme="select2" ng-disabled="disabled" style="width: 100%;">
-    <ui-select-match placeholder="Select person...">{{$item.name}} &lt;{{$item.email}}&gt;</ui-select-match>
-    <ui-select-choices repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
-      <div ng-bind-html="person.name | highlight: $select.search"></div>
-      <small>
-        email: {{person.email}}
-        age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
-      </small>
-    </ui-select-choices>
-  </ui-select>
-  <p>Selected: {{multipleDemo.selectedPeople}}</p>
-</div>
+							<h3>Array of objects</h3>
+							  <ui-select multiple ng-model="multipleDemo.selectedPeople" theme="select2" ng-disabled="disabled" style="width: 100%;">
+							    <ui-select-match placeholder="Select person...">{{$item.name}} &lt;{{$item.email}}&gt;</ui-select-match>
+							    <ui-select-choices repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
+							      <div ng-bind-html="person.name | highlight: $select.search"></div>
+							      <small>
+							        email: {{person.email}}
+							        age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+							      </small>
+							    </ui-select-choices>
+							  </ui-select>
+						  <p>Selected: {{multipleDemo.selectedPeople[1].name}}</p>
+						</div>
+						
+						<?= $this->render('_employee')?>
 					</div>
 				</div>
 				<div class="container">
