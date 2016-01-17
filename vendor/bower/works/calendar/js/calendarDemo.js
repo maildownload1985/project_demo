@@ -475,10 +475,6 @@ calendarDemoApp.controller('list_employee', function($scope, $http, $timeout) {
   };
   
 
-  $timeout(function(){
-   $scope.peopleAsync = $data_employee;
-  },3000);
-
   $scope.counter = 0;
   $scope.someFunction = function (item, model){
     $scope.counter++;
