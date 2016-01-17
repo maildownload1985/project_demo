@@ -202,8 +202,8 @@ calendarDemoApp.controller('CalendarCtrl',
 
     $scope.changeLang = function() {
       if($scope.changeTo === 'Hungarian'){
-        $scope.uiConfig.calendar.dayNames = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"];
-        $scope.uiConfig.calendar.dayNamesShort = ["Vas", "Hét", "Kedd", "Sze", "Csüt", "Pén", "Szo"];
+        $scope.uiConfig.calendar.dayNames = ["VasĂ¡rnap", "HĂ©tfÅ‘", "Kedd", "Szerda", "CsĂ¼tĂ¶rtĂ¶k", "PĂ©ntek", "Szombat"];
+        $scope.uiConfig.calendar.dayNamesShort = ["Vas", "HĂ©t", "Kedd", "Sze", "CsĂ¼t", "PĂ©n", "Szo"];
         $scope.changeTo= 'English';
       } else {
         $scope.uiConfig.calendar.dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -490,14 +490,14 @@ calendarDemoApp.controller('list_employee', function($scope, $http, $timeout) {
    $scope.peopleAsync = [
         { name: 'Adam',      email: 'adam@email.com',      age: 12, country: 'United States' },
         { name: 'Amalie',    email: 'amalie@email.com',    age: 12, country: 'Argentina' },
-        { name: 'Estefan�a', email: 'estefania@email.com', age: 21, country: 'Argentina' },
+        { name: 'Estefanía', email: 'estefania@email.com', age: 21, country: 'Argentina' },
         { name: 'Adrian',    email: 'adrian@email.com',    age: 21, country: 'Ecuador' },
         { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30, country: 'Ecuador' },
         { name: 'Samantha',  email: 'samantha@email.com',  age: 30, country: 'United States' },
         { name: 'Nicole',    email: 'nicole@email.com',    age: 43, country: 'Colombia' },
         { name: 'Natasha',   email: 'natasha@email.com',   age: 54, country: 'Ecuador' },
         { name: 'Michael',   email: 'michael@email.com',   age: 15, country: 'Colombia' },
-        { name: 'Nicol�s',   email: 'nicole@email.com',    age: 43, country: 'Colombia' }
+        { name: 'Nicolás',   email: 'nicole@email.com',    age: 43, country: 'Colombia' }
       ];
   },3000);
 
@@ -511,14 +511,14 @@ calendarDemoApp.controller('list_employee', function($scope, $http, $timeout) {
   $scope.people = [
     { name: 'Adam',      email: 'adam@email.com',      age: 12, country: 'United States' },
     { name: 'Amalie',    email: 'amalie@email.com',    age: 12, country: 'Argentina' },
-    { name: 'Estefan�a', email: 'estefania@email.com', age: 21, country: 'Argentina' },
+    { name: 'Estefanía', email: 'estefania@email.com', age: 21, country: 'Argentina' },
     { name: 'Adrian',    email: 'adrian@email.com',    age: 21, country: 'Ecuador' },
     { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30, country: 'Ecuador' },
     { name: 'Samantha',  email: 'samantha@email.com',  age: 30, country: 'United States' },
     { name: 'Nicole',    email: 'nicole@email.com',    age: 43, country: 'Colombia' },
     { name: 'Natasha',   email: 'natasha@email.com',   age: 54, country: 'Ecuador' },
     { name: 'Michael',   email: 'michael@email.com',   age: 15, country: 'Colombia' },
-    { name: 'Nicol�s',   email: 'nicolas@email.com',    age: 43, country: 'Colombia' }
+    { name: 'Nicolás',   email: 'nicolas@email.com',    age: 43, country: 'Colombia' }
   ];
 
   $scope.availableColors = ['Red','Green','Blue','Yellow','Magenta','Maroon','Umbra','Turquoise'];
@@ -534,7 +534,7 @@ calendarDemoApp.controller('list_employee', function($scope, $http, $timeout) {
   $scope.country = {};
   $scope.countries = [ // Taken from https://gist.github.com/unceus/6501985
     {name: 'Afghanistan', code: 'AF'},
-    {name: '�land Islands', code: 'AX'},
+    {name: 'Åland Islands', code: 'AX'},
     {name: 'Albania', code: 'AL'},
     {name: 'Algeria', code: 'DZ'},
     {name: 'American Samoa', code: 'AS'},
