@@ -94,7 +94,7 @@ class EventController extends CeController
     public function actionCalendar() {
         $this->layout=false;
         header('Content-type: application/json');
-        $calendars = array(
+        /*$calendars = array(
             array(
                 'title' => 'Long Event',
                 'start' => '2016-01-04'
@@ -109,7 +109,25 @@ class EventController extends CeController
         				'end' => '2016-04-05'
         		)
         );
-        echo json_encode($calendars);
+        echo json_encode($calendars);*/
+        
+        $modelEvent = new Event();
+        $tmpEvents = $modelEvent->getEventCalendar();
+        
+        $events = array();
+        if (!empty($tmpEvents)) {
+            foreach ($tmpEvents as $key => $value) {
+                $events[] = array(
+                    'id' => $value['id'],
+                    'title' => $value['description'],
+                    'start' => $value['start_datetime'],
+                    'end' => $value['end_datetime']
+                );
+            }
+        }
+        
+        echo json_encode($events);
+        
     }
     
     /**
