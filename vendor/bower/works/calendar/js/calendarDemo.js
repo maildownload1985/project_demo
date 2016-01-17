@@ -447,7 +447,6 @@ calendarDemoApp.filter('propsFilter', function() {
   };
 });
 
-
 calendarDemoApp.controller('list_employee', function($scope, $http, $timeout) {
   $scope.disabled = undefined;
   $scope.searchEnabled = undefined;
@@ -473,26 +472,14 @@ calendarDemoApp.controller('list_employee', function($scope, $http, $timeout) {
     $scope.address.selected = undefined;
     $scope.country.selected = undefined;
   };
-  
 
-  $timeout(function(){
-   $scope.peopleAsync = $data_employee;
-  },3000);
-
-  $scope.counter = 0;
-  $scope.someFunction = function (item, model){
-    $scope.counter++;
-    $scope.eventResult = {item: item, model: model};
-  };
 
   $scope.person = {};
-  
   $scope.people = [];
   
   $http.get(window.location.host + '/work/web/index.php?r=calendar/event/employee').then(function(response) {
 	   $scope.people = response.data;
   });
-  
 
   $scope.multipleDemo = {};
 
