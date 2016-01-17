@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use common\models\work\Calendar;
 use common\models\work\Event;
 ?>
-<div class="tab-pane active" id="tab1">
+<div class="tab-pane" id="tab2">
 	<div class="accsection">
 		<div class="topwrap">
 			<div class="row">

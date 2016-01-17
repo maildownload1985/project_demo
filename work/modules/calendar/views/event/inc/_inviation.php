@@ -3,7 +3,7 @@ use common\models\work\Event;
 use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
 ?>
-<div class="tab-pane" id="tab2">
+<div class="tab-pane active" id="tab1">
 	<div class="accsection">
 		<div class="topwrap">
 			<div class="row">
