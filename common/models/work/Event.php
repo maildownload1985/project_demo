@@ -86,4 +86,9 @@ class Event extends CeActivieRecord
     {
     	return ArrayHelper::map(Calendar::find()->asArray()->all(), 'id', 'name');
     }
+    
+    public function getEventCalendar() {
+        $data = $this->find()->asArray()->all();
+        return $data;
+    }
 }
