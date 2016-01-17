@@ -16,7 +16,6 @@ use yii\filters\VerbFilter;
 use common\controllers\CeController;
 use common\models\work\Remind;
 use common\models\work\Calendar;
-use common\models\work\Employee;
 /**
  * EventController implements the CRUD actions for event model.
  */
@@ -163,7 +162,17 @@ class EventController extends CeController
         $this->layout=false;
         header('Content-type: application/json');
         
-        /*$employees = array(
+        /*{ name: 'Adam',      email: 'adam@email.com',      age: 12, country: 'United States' },
+        { name: 'Amalie',    email: 'amalie@email.com',    age: 12, country: 'Argentina' },
+        { name: 'Estefan a', email: 'estefania@email.com', age: 21, country: 'Argentina' },
+        { name: 'Adrian',    email: 'adrian@email.com',    age: 21, country: 'Ecuador' },
+        { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30, country: 'Ecuador' },
+        { name: 'Samantha',  email: 'samantha@email.com',  age: 30, country: 'United States' },
+        { name: 'Nicole',    email: 'nicole@email.com',    age: 43, country: 'Colombia' },
+        { name: 'Natasha',   email: 'natasha@email.com',   age: 54, country: 'Ecuador' },
+        { name: 'Michael',   email: 'michael@email.com',   age: 15, country: 'Colombia' },
+        { name: 'Nicol s',   email: 'nicole@email.com',    age: 43, country: 'Colombia' }*/
+        $employees = array(
             array(
                 'name' => 'Adam',
                 'email' => 'adam@email.com',
@@ -188,21 +197,7 @@ class EventController extends CeController
                 'age' => '221',
                 'country' => ''
             )
-        );*/
-        
-        $modelEmployee = new Employee();
-        $tmpDataEmployees = $modelEmployee->getDataEmployees();
-        $employees = array();
-        if (!empty($tmpDataEmployees)) {
-            foreach ($tmpDataEmployees as $key => $value) {
-                $employees[] = array(
-                    'id' => $value['id'],
-                    'name' => $value['username'],
-                    'email' => $value['email']
-                );
-            }
-        }
-        
+        );
         echo json_encode($employees);
     }
 }

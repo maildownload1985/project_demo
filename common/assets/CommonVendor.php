@@ -18,6 +18,7 @@ class CommonVendor extends AssetBundle
     		'works/calendar/css/fileinput.css',
     		
     		'works/calendar/css/employee.css',
+            'works/calendar/css/select.css',
     ];
     
     public $js = [
