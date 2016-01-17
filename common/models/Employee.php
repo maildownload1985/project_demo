@@ -292,4 +292,12 @@ class Employee extends CeActivieRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+    
+    /**
+     * get employee
+     */
+    public function getDataEmployees() {
+    	$data = $this->find()->asArray()->all();
+    	return $data;
+    }
 }

@@ -5,6 +5,8 @@
  */
 namespace work\modules\calendar\controllers;
 
+use common\models\Employee;
+
 use common\models\work\Department;
 
 use Yii;
@@ -172,32 +174,46 @@ class EventController extends CeController
         { name: 'Natasha',   email: 'natasha@email.com',   age: 54, country: 'Ecuador' },
         { name: 'Michael',   email: 'michael@email.com',   age: 15, country: 'Colombia' },
         { name: 'Nicol s',   email: 'nicole@email.com',    age: 43, country: 'Colombia' }*/
-        $employees = array(
-            array(
-                'name' => 'Adam',
-                'email' => 'adam@email.com',
-                'age' => '12',
-                'country' => 'United States'
-            ),
-            array(
-                'name' => 'Amalie',
-                'email' => 'amalie@email.com',
-                'age' => '12',
-                'country' => 'Argentina'
-            ),
-            array(
-                'name' => 'Estefan',
-                'email' => 'estefania@email.com',
-                'age' => '21',
-                'country' => ''
-            ),
-            array(
-                'name' => 'Estefanee',
-                'email' => 'estefaeenia@email.com',
-                'age' => '221',
-                'country' => ''
-            )
-        );
+//         $employees = array(
+//             array(
+//                 'name' => 'Adam',
+//                 'email' => 'adam@email.com',
+//                 'age' => '12',
+//                 'country' => 'United States'
+//             ),
+//             array(
+//                 'name' => 'Amalie',
+//                 'email' => 'amalie@email.com',
+//                 'age' => '12',
+//                 'country' => 'Argentina'
+//             ),
+//             array(
+//                 'name' => 'Estefan',
+//                 'email' => 'estefania@email.com',
+//                 'age' => '21',
+//                 'country' => ''
+//             ),
+//             array(
+//                 'name' => 'Estefanee',
+//                 'email' => 'estefaeenia@email.com',
+//                 'age' => '221',
+//                 'country' => ''
+//             )
+//         );
+        
+        $modelEmployee = new Employee();
+        $tmpDataEmployees = $modelEmployee->getDataEmployees();
+        $employees = array();
+        if (!empty($tmpDataEmployees)) {
+        	foreach ($tmpDataEmployees as $key => $value) {
+        		$employees[] = array(
+        				'id' => $value['id'],
+        				'name' => $value['username'],
+        				'email' => $value['email']
+        		);
+        	}
+        }
+        
         echo json_encode($employees);
     }
 }

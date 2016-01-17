@@ -10,10 +10,11 @@ use kartik\widgets\ActiveForm;
 				<div class="container">
 					<h4><?= Yii::t('app', 'Department');?></h4>
 					<div class='col-md-6'>
-						<?= $form->field($model_department, 'id', ['template' => "{label}\n{input}\n{hint}\n{error}"])->checkboxList(Event::getDepartmentNameCheckBox(), ['id' => 'inviation_deparment_id'])->label(false); ?>
-						<div class="checkbox">
-							<label> <input type="checkbox" id="checkAll"></label>
+					<div class="checkbox">
+							<label> <input type="checkbox" id="checkAll">All</label>
 						</div>
+						<?= $form->field($model_department, 'id', ['template' => "{label}\n{input}\n{hint}\n{error}"])->checkboxList(Event::getDepartmentNameCheckBox(), ['id' => 'inviation_deparment_id'])->label(false); ?>
+						
 					</div>
 				</div>
 				<div class="container">
@@ -31,10 +32,10 @@ use kartik\widgets\ActiveForm;
 							      </small>
 							    </ui-select-choices>
 							  </ui-select>
-						  <p>Selected: {{multipleDemo.selectedPeople[1].name}}</p>
+							  <br/><br/>
+						  <?= $this->render('_employee')?>
+						  <br/>
 						</div>
-						
-						<?= $this->render('_employee')?>
 					</div>
 				</div>
 				<div class="container">
