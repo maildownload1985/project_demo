@@ -91,4 +91,26 @@ class Event extends CeActivieRecord
         $data = $this->find()->asArray()->all();
         return $data;
     }
+    
+    /**
+     * insert event
+     */
+    public function insertEvent($post) {
+        $this->calendar_id = 0;
+        $this->employee_id = 0;
+        $this->name = $post['Event']['name'];
+        $this->description = $post['Event']['description'];
+        $this->description_parse = $post['Event']['description'];
+        $this->address = 'test';
+        $this->start_datetime = 0;
+        $this->end_datetime = 0;
+        $this->is_public = $post['Event']['is_public'];
+        $this->datetime_created = '1452163538';
+        $this->lastup_datetime = '1452163538';
+        $this->lastup_employee_id = 0;
+        $this->disabled = 0;
+        
+        return $this->save();
+        
+    }
 }
