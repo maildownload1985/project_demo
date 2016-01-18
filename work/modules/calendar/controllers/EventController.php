@@ -47,6 +47,12 @@ class EventController extends CeController
         $model_department = new Department();
         $model_calendar = new Calendar();
         
+        if (Yii::$app->request->post()){
+            //request is post
+            $post = Yii::$app->request->post();
+            $model_event->insertEvent($post);
+        }
+        
         return $this->render('index', [
 	        		'model_event' => $model_event,
 	        		'model_inviation' => $model_inviation,
