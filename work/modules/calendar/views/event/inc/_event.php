@@ -81,6 +81,7 @@ use common\models\work\Event;
 				<div class="container">
 					<div class='col-md-6 form-inline align_right'>
 						<p>
+                            <?= Html::submitButton(Yii::t('app', 'Submit'), ['class'=> 'btn btn-large btn-primary']) ;?>
 							<?= Html::Button(Yii::t('app', 'Next'), ['class'=> 'btn btn-primary btnNext']) ;?>
 							<?= Html::submitButton(Yii::t('app', 'Close'), ['class'=> 'btn btn-danger btn-default', 'data-dismiss' => 'modal']) ;?>
 						</p>
