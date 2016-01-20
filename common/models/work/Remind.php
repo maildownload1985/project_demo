@@ -41,7 +41,6 @@ class Remind extends CeActivieRecord
     {
         return [
             [['employee_id', 'owner_id', 'remind_datetime', 'minute_before', 'repeated_time', 'datetime_created', 'lastup_datetime', 'lastup_employee_id'], 'integer'],
-            [['owner_table', 'repeated_time', 'minute_before'], 'required'],
             [['content'], 'string'],
             [['is_snoozing', 'is_remind'], 'boolean'],
             [['owner_table'], 'string', 'max' => 50]

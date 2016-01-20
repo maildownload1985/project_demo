@@ -34,7 +34,7 @@ class Invitation extends CeActivieRecord
     public function rules()
     {
         return [
-            [['event_id', 'owner_id'], 'required'],
+            [['owner_id'], 'required'],
             [['event_id', 'owner_id', 'datetime_created', 'lastup_datetime', 'lastup_employee_id'], 'integer'],
             [['disabled'], 'boolean'],
             [['owner_table'], 'string', 'max' => 99]

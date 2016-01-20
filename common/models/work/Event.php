@@ -45,11 +45,11 @@ class Event extends CeActivieRecord
     {
         return [
             [['calendar_id', 'employee_id', 'datetime_created', 'lastup_datetime', 'lastup_employee_id'], 'integer'],
-            [['employee_id', 'name', 'description', 'description_parse', 'start_datetime', 'end_datetime', 'address' ], 'required'],
+            [['name', 'description', 'start_datetime', 'end_datetime', 'address' ], 'required'],
             [['description', 'description_parse'], 'string'],
             [['is_public', 'disabled'], 'boolean'],
             [['start_datetime', 'end_datetime'], 'safe'],
-            ['start_datetime','compare','compareAttribute'=>'end_datetime','operator'=>'>'],
+            ['start_datetime','compare','compareAttribute'=>'end_datetime','operator'=>'<='],
             [['name', 'address'], 'string', 'max' => 255]
         ];
     }
@@ -92,24 +92,26 @@ class Event extends CeActivieRecord
         return $data;
     }
     
+    public function beforeSave($insert) {
+    	$this->calendar_id = 1;
+    	$this->employee_id = 1;
+    	$this->description_parse = "TTTT";
+    	$this->start_datetime = strtotime($this->start_datetime);;
+    	$this->end_datetime   = strtotime($this->end_datetime);
+
+    	return parent::beforeSave($insert);
+    }
+    
     /**
      * insert event
      */
     public function insertEvent($post) {
-        $this->calendar_id = 0;
+        $this->calendar_id = $post['Calendar']['name'];
         $this->employee_id = 0;
-        $this->name = $post['Event']['name'];
-        $this->description = $post['Event']['description'];
         $this->description_parse = $post['Event']['description'];
-        $this->address = 'test';
-        $this->start_datetime = 0;
-        $this->end_datetime = 0;
-        $this->is_public = $post['Event']['is_public'];
-        $this->datetime_created = '1452163538';
-        $this->lastup_datetime = '1452163538';
-        $this->lastup_employee_id = 0;
-        $this->disabled = 0;
         
+        $this->save();
+        exit;
         return $this->save();
         
     }
