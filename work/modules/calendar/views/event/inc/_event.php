@@ -40,7 +40,7 @@ use common\models\work\Event;
 				</div>
 
 				<div class="container">
-					<div class='col-md-3'><?= $form->field($model_remind, 'owner_id')->checkbox()?></div>
+					<div class='col-md-3'><?= $form->field($model_remind, 'is_remind')->checkbox()?></div>
 					<div class='col-md-3'><?= $form->field($model_remind, 'minute_before')->dropDownList(Remind::getTimeRemind(), ['options'=>['30' => ['Selected'=>true]]], ['prompt'=>  Yii::t('app', 'Please choose your type')])->label(false); ?></div>
 				</div>
 

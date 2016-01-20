@@ -65,7 +65,7 @@ class Remind extends CeActivieRecord
             'datetime_created'   => Yii::t('work', 'Datetime Created'),
             'lastup_datetime' 	 => Yii::t('work', 'Lastup Datetime'),
             'lastup_employee_id' => Yii::t('work', 'Lastup Employee ID'),
-            'is_remind' 	 	 => Yii::t('work', 'is_remind'),
+            'is_remind' 	 	 => Yii::t('work', 'Is Remind'),
         ];
     }
     
