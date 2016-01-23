@@ -300,4 +300,11 @@ class Employee extends CeActivieRecord implements IdentityInterface
     	$data = $this->find()->asArray()->all();
     	return $data;
     }
+
+    /**
+     * get employee
+     */
+    public function getFullNameLogin() {
+    	return Yii::$app->user->identity->firstname . ' '. Yii::$app->user->identity->lastname;
+    }
 }

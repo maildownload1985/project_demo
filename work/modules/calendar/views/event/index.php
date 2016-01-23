@@ -44,9 +44,14 @@ $this->params ['breadcrumbs'] [] = $this->title;
 												'model_remind' => $model_remind, 
 												'inviation' => $model_inviation, 
 												'model_department' => $model_department,
-												'model_calendar' => $model_calendar
+												'model_calendar' => $model_calendar,
+												'model_sms' => $model_sms,
+												'model_file' => $model_file
 										]) ?>
 									</div>
+								</div>
+								
+								<div>
 								</div>
 							</div>
 							<div class="calendar" ng-model="eventSources" calendar="myCalendar1" ui-calendar="uiConfig.calendar"></div>

@@ -88,31 +88,31 @@ class Event extends CeActivieRecord
     }
     
     public function getEventCalendar() {
-        $data = $this->find()->asArray()->all();
-        return $data;
+        return $this->find()->asArray()->all();
     }
     
-    public function beforeSave($insert) {
-    	$this->calendar_id = 1;
-    	$this->employee_id = 1;
-    	$this->description_parse = "TTTT";
-    	$this->start_datetime = strtotime($this->start_datetime);;
-    	$this->end_datetime   = strtotime($this->end_datetime);
+//     public function beforeSave($insert) {
+    	
+//     	$this->calendar_id = 1;
+//     	$this->employee_id = Yii::$app->user->identity->id;
+//     	$this->description_parse = $this->description;
+//     	$this->start_datetime = strtotime($this->start_datetime);
+//     	$this->end_datetime   = strtotime($this->end_datetime);
 
-    	return parent::beforeSave($insert);
-    }
+//     	return parent::beforeSave($insert);
+//     }
     
     /**
      * insert event
      */
-    public function insertEvent($post) {
-        $this->calendar_id = $post['Calendar']['name'];
-        $this->employee_id = 0;
-        $this->description_parse = $post['Event']['description'];
+//     public function insertEvent($post) {
+//         $this->calendar_id = $post['Calendar']['name'];
+//         $this->employee_id = Yii::$app->user->identity->id;
+//         $this->description_parse = $post['Event']['description'];
         
-        $this->save();
-        exit;
-        return $this->save();
+//         $this->save();
+//         exit;
+//         return $this->save();
         
-    }
+//     }
 }

@@ -33,7 +33,7 @@ class Department extends CeActivieRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['id'], 'required'],
             [['description'], 'string'],
             [['datetime_created', 'lastup_datetime', 'lastup_employee_id'], 'integer'],
             [['disabled'], 'boolean'],

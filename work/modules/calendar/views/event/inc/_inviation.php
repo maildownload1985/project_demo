@@ -13,7 +13,7 @@ use kartik\widgets\ActiveForm;
 					<div class="checkbox">
 							<label> <input type="checkbox" id="checkAll">All</label>
 						</div>
-						<?= $form->field($model_department, 'id', ['template' => "{label}\n{input}\n{hint}\n{error}"])->checkboxList(Event::getDepartmentNameCheckBox(), ['id' => 'inviation_deparment_id'])->label(false); ?>
+						<?= $form->field($model_department, 'id')->checkboxList(Event::getDepartmentNameCheckBox())->label(false); ?>
 						
 					</div>
 				</div>
@@ -21,7 +21,6 @@ use kartik\widgets\ActiveForm;
 					<h4><?= Yii::t('app', 'Department');?></h4>
 					<div class='col-md-6'>
 						<div ng-controller="list_employee">
-							<h3>Array of objects</h3>
 							  <ui-select multiple ng-model="multipleDemo.selectedPeople" theme="select2" ng-disabled="disabled" style="width: 100%;">
 							    <ui-select-match placeholder="Select person...">{{$item.name}} &lt;{{$item.email}}&gt;</ui-select-match>
 							    <ui-select-choices repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
@@ -38,9 +37,17 @@ use kartik\widgets\ActiveForm;
 						</div>
 					</div>
 				</div>
+				
 				<div class="container">
 					<div class='col-md-6'>
-							<?= Html::Button(Yii::t('app', 'Previous'), ['class'=> 'btn btn-primary btnPrevious']) ;?>
+						<div ng-controller="list_employee">
+							<?= $form->field($model_sms, 'is_sms')->checkbox()?>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class='col-md-6'>
+							<?= Html::Button(Yii::t('app', 'Next'), ['class'=> 'btn btn-primary btnNext']) ;?>
 							<?= Html::submitButton(Yii::t('app', 'Submit'), ['class'=> 'btn btn-large btn-primary']) ;?>
 							<?= Html::submitButton(Yii::t('app', 'Close'), ['class'=> 'btn btn-danger btn-default', 'data-dismiss' => 'modal']) ;?>
 						</p>

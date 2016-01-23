@@ -33,7 +33,7 @@ class Calendar extends CeActivieRecord
     public function rules()
     {
         return [
-            [['name', 'description'], 'required'],
+            [['id', 'name', 'description'], 'required'],
             [['description'], 'string'],
             [['datetime_created', 'lastup_datetime', 'lastup_employee_id'], 'integer'],
             [['disabled'], 'boolean'],

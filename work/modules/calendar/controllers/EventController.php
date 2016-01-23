@@ -6,7 +6,6 @@
 namespace work\modules\calendar\controllers;
 
 use common\models\Employee;
-
 use common\models\work\Department;
 
 use Yii;
@@ -18,6 +17,12 @@ use yii\filters\VerbFilter;
 use common\controllers\CeController;
 use common\models\work\Remind;
 use common\models\work\Calendar;
+use common\models\work\Sms;
+use common\models\work\Activity;
+use common\models\work\Notification;
+use common\models\work\File;
+use common\models\work\EmployeeActivity;
+use yii\web\UploadedFile;
 /**
  * EventController implements the CRUD actions for event model.
  */
@@ -46,26 +51,222 @@ class EventController extends CeController
         $model_remind = new Remind();
         $model_department = new Department();
         $model_calendar = new Calendar();
+        $model_employee = new Employee();
+        $model_sms = new Sms();
+        $model_file = new File();
         
         if ($model_event->load(Yii::$app->request->post()) 
 //         		&& $model_inviation->load(Yii::$app->request->post())
-        		&& $model_remind->load(Yii::$app->request->post())
+//         		&& $model_remind->load(Yii::$app->request->post())
 //         		&& $model_department->load(Yii::$app->request->post())
 //         		&& $model_calendar->load(Yii::$app->request->post())
         		){
-        	
+        			print_r(Yii::$app->request->post());
+            //___________________________ Start insert table event ___________________________
+            
+        	$model_calendar->load(Yii::$app->request->post());
+        	$model_event->calendar_id = $model_calendar->id;
+        	$model_event->employee_id = Yii::$app->user->identity->id;
+        	$model_event->description_parse = $model_event->description;
+        	$model_event->start_datetime = strtotime($model_event->start_datetime);
+        	$model_event->end_datetime   = strtotime($model_event->end_datetime);
         	$model_event->save();
-        	$model_remind->save();
+        	//___________________________ END insert table event ___________________________
+        	
+        	
+        	//___________________________ Start insert table Invitation ___________________________
+        	$model_department->load(Yii::$app->request->post());
+        	
+        	
+        	$data_department_ids = [];
+        	foreach ($model_department->id as $type) {
+        		$data_department_ids[] = [
+        				'event_id' => $model_event->id, 
+        				'owner_id' => $type,
+        				'owner_table' => 'department'
+        		];
+        	}
+        	
+        	//getlist department
+        	$connection = \Yii::$app->db;
+        	$connection->createCommand()->batchInsert($model_inviation->tableName(), array_keys($data_department_ids[0]), $data_department_ids)->execute();
+        	
+        	//getlist emplyoee
+        	$employees = [1, 2, 3];
+        	foreach ($employees as $type) {
+        		$data_employee_ids[] = [
+        				'event_id' => $model_event->id,
+        				'owner_id' => $type,
+        				'owner_table' => 'employee'
+        		];
+        	}
+        	$connection->createCommand()->batchInsert($model_inviation->tableName(), array_keys($data_employee_ids[0]), $data_employee_ids)->execute();
+        	//___________________________ END insert table Invitation ___________________________
+        	
+        	
+        	
+        	
+        	//___________________________ Start insert table Redmind ___________________________
+        	// when click checkbox is remind will insert in table remind
+        	$model_remind->load(Yii::$app->request->post());
+//         	if ($model_remind->is_remind) {
+	        	$employee = [1, 2, 3];
+	   			$data_employee =  $model_employee->find()->Where(
+	        		['or', 
+	        			['department_id' => $model_department->id],//list select department
+	        			['id' => $employee]////list select employee
+		        	]
+	   			)->all();
+	        		
+	        	$data_reminds = [];
+	        	foreach ($data_employee as $type) {
+	        		$data_reminds[] = [
+	        				'employee_id' => $type->id,
+	        				'owner_id' => $model_event->id,
+	        				'owner_table' => 'event',
+	        				'content' => $model_event->name,
+	        				'remind_datetime' => $model_event->start_datetime,
+	        				'minute_before' => $model_remind->minute_before,
+	        		];
+	        	}
+	        	
+	        	$connection->createCommand()->batchInsert($model_remind->tableName(), array_keys($data_reminds[0]), $data_reminds)->execute();
+//         	}
+        	//___________________________ END insert table Redmind ___________________________
+        	
+        	//___________________________ Start insert table Employee_activity: ___________________________
+	        $model_EmployeeActivity = new EmployeeActivity();
+	        if($data_EmployeeActivitys = $model_EmployeeActivity->find()->andWhere(['employee_id' => Yii::$app->user->identity->id])->one()){
+	        	$data_EmployeeActivitys->activity_calendar  += 1;
+	        	$data_EmployeeActivitys->activity_total  += 1;
+	        	$data_EmployeeActivitys->save();
+	        }else {
+	        	$model_EmployeeActivity->employee_id  = Yii::$app->user->identity->id;
+	        	$model_EmployeeActivity->activity_calendar  = 1;
+	        	$data_EmployeeActivitys->activity_total  = 1;
+	        	$model_EmployeeActivity->save();
+	        }
+        	//___________________________ END insert table Employee_activity ___________________________
+
+        	
+        	//___________________________ Start insert table Activity: ___________________________
+        	$model_Activity = new Activity();
+        	$model_Activity->owner_id = $model_event->id;
+        	$model_Activity->owner_table = 'event';
+        	$model_Activity->parent_employee_id = 0;
+        	$model_Activity->employee_id = Yii::$app->user->identity->id;
+        	$model_Activity->type = 'create_event';
+        	$model_Activity->content = $model_employee->getFullNameLogin(). ' '. Yii::t('work', 'created') . $model_event->name;
+        	$model_Activity->save();
+        	
+        	//___________________________ END insert table Activity ___________________________
+
+        	
+        	//___________________________ Start insert table File: ___________________________
+        	$model_file->load(Yii::$app->request->post());
+        	$fileList = ["a.pdf", "c.pdf", "b.pdf"];
+        	$model_file->imageFiles = UploadedFile::getInstances($model_file, 'imageFiles');
+        	
+        	print_r($model_file->imageFiles) ;
         	exit;
-//             $model_event->insertEvent(Yii::$app->request->post());
+        	exit;
+//         	$model_file->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
+//         	if ($model->upload()) {
+//         		// file is uploaded successfully
+//         		return;
+//         	}
+        	
+        	$data_files = [];
+        	foreach ($fileList as $type) {
+        		$data_files[] = [
+        				'owner_id' => $model_event->id,
+        				'employee_id' => Yii::$app->user->identity->id,
+        				'owner_object' => 'event',
+        				'name' => $type,//name
+        				'encoded_name' => 'file encoded_name',
+        				'path' => 'URL',
+        				'is_image' => 0,
+        				'file_type' => 'type file',
+        				'file_size' => 99,
+        		];
+        	}
+        	$connection->createCommand()->batchInsert($model_file->tableName(), array_keys($data_files[0]), $data_files)->execute();
+        	//___________________________ END insert table File ___________________________
+        	
+        	
+        	//___________________________ Start insert table Notification: ___________________________
+        	
+        	$employee = [1, 2, 3];
+        	$data_employee =  $model_employee->find()->Where(
+        			['or',
+        					['department_id' => $model_department->id],//list select department
+        					['id' => $employee]////list select employee
+        			]
+        			)->all();
+        			 
+        			$data_Notification = [];
+        			foreach ($data_employee as $type) {
+        				$data_Notification[] = [
+        						'owner_id' => $model_event->id,
+        						'owner_table' => 'event',
+								'employee_id' => $type->id,
+        						'owner_employee_id' => 0,
+        						'type' => 'create_event',
+        						'content' => $model_employee->getFullNameLogin(). ' '. Yii::t('work', 'created') . $model_event->name
+        				];
+        			}
+        			$model_Notification = new Notification();
+        			$connection = \Yii::$app->db;
+        			$connection->createCommand()->batchInsert($model_Notification->tableName(), array_keys($data_Notification[0]), $data_Notification)->execute();
+        			
+        	//___________________________ END insert table Notification: ___________________________
+        	
+        	
+        			
+        			
+        	//___________________________ Start insert table send mail ___________________________
+        			
+        	//___________________________ END insert table send mail: ___________________________
+        	
+        			
+        			
+        			
+        			
+        	//___________________________ Start insert table SMS ___________________________
+        	//         	if ($model_remind->is_remind) {//@todo after change SMS
+        	$employee = [1, 2, 3];
+        	
+        	$data_employee =  $model_employee->find()->Where(
+        			['or',
+        					['department_id' => $model_department->id],//list select department
+        					['id' => $employee]////list select employee
+        			]
+        			)->all();
+        			$data_SMS = [];
+        			foreach ($data_employee as $type) {
+        				$data_SMS[] = [
+        						'employee_id' => $model_event->id,
+        						'owner_id' => $type->id,
+        						'owner_table' => 'event',
+        						'content' => $model_employee->getFullNameLogin(). ' '. Yii::t('work', 'created') . $model_event->name,
+        						'is_success' => 1,
+        						'fee' => 0,
+        				];
+        			}
+        			 
+        			$connection->createCommand()->batchInsert($model_sms->tableName(), array_keys($data_SMS[0]), $data_SMS)->execute();
+        			 
+        			//         	}
+        			//___________________________ END insert table SMS ___________________________
         }
-        
         return $this->render('index', [
 	        		'model_event' => $model_event,
 	        		'model_inviation' => $model_inviation,
 	        		'model_remind' => $model_remind,
 	        		'model_department' => $model_department,
-        			'model_calendar' => $model_calendar
+        			'model_calendar' => $model_calendar,
+        			'model_sms' => $model_sms,
+        			'model_file' => $model_file
         		]);
     }
 

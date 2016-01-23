@@ -40,8 +40,8 @@ use common\models\work\Event;
 				</div>
 
 				<div class="container">
-					<div class='col-md-3'><?= $form->field($model_remind, 'is_remind')->checkbox()?></div>
-					<div class='col-md-3'><?= $form->field($model_remind, 'minute_before')->dropDownList(Remind::getTimeRemind(), ['options'=>['30' => ['Selected'=>true]]], ['prompt'=>  Yii::t('app', 'Please choose your type')])->label(false); ?></div>
+					<div class='col-md-3'><?= $form->field($model_remind, 'is_remind')->checkbox(['ng-model' => 'checked', 'ng-click' => 'checked=true'])?></div>
+					<div class='col-md-3'><?= $form->field($model_remind, 'is_remind')->dropDownList(Remind::getTimeRemind(), ['ng-disabled' => '!checked']); ?></div>
 				</div>
 
 				<div class="container">
@@ -69,7 +69,7 @@ use common\models\work\Event;
 					<div class='col-md-6'>
 						<h4><?= Yii::t('app', 'Calendar');?></h4>
 						<div class="form-group">
-							<?= $form->field($model_calendar, 'name')->dropDownList(Event::getCalendarOption(), ['prompt'=>  Yii::t('app', 'Please choose your type')])->label(false); ?>
+							<?= $form->field($model_calendar, 'id')->dropDownList(Event::getCalendarOption(), ['prompt'=>  Yii::t('app', 'Please choose your type')])->label(false); ?>
 						</div>
 					</div>
 				</div>
@@ -82,7 +82,7 @@ use common\models\work\Event;
 					<div class='col-md-6 form-inline align_right'>
 						<p>
                             <?= Html::submitButton(Yii::t('app', 'Submit'), ['class'=> 'btn btn-large btn-primary']) ;?>
-							<?= Html::Button(Yii::t('app', 'Next'), ['class'=> 'btn btn-primary btnNext']) ;?>
+							<?= Html::Button(Yii::t('app', 'Previous'), ['class'=> 'btn btn-primary btnPrevious']) ;?>
 							<?= Html::submitButton(Yii::t('app', 'Close'), ['class'=> 'btn btn-danger btn-default', 'data-dismiss' => 'modal']) ;?>
 						</p>
 					</div>
