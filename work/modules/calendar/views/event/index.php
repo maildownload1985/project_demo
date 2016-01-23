@@ -46,7 +46,8 @@ $this->params ['breadcrumbs'] [] = $this->title;
 												'model_department' => $model_department,
 												'model_calendar' => $model_calendar,
 												'model_sms' => $model_sms,
-												'model_file' => $model_file
+												'model_file' => $model_file,
+												'model_employee' => $model_employee
 										]) ?>
 									</div>
 								</div>

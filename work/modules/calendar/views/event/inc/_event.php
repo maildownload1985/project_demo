@@ -60,7 +60,7 @@ use common\models\work\Event;
 					<div class='col-md-6'>
 						<h4><?= Yii::t('app', 'Files');?></h4>
 						<div class="form-group">
-							<input class="file" type="file" multiple data-preview-file-type="any" data-upload-url="#">
+						<?= $form->field($model_file, 'imageFiles[]')->fileInput(['multiple' => true, 'accept' => 'image/*', 'class' => "file", 'data-upload-url' => '#']) ?>
 						</div>
 					</div>
 				</div>

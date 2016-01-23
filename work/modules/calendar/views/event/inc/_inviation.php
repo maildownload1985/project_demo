@@ -34,7 +34,7 @@ use kartik\widgets\ActiveForm;
 							  <br/><br/>
 							  <ul>
 							     <li ng-repeat=" people in multipleDemo.selectedPeople" style="visibility: hidden;">
-							         <input type="hidden" name="employee[]" value="{{people.id}}"></input>
+							    	 <?= $form->field($model_employee, 'id[]')->hiddenInput(['value'=>'{{people.id}}'])->label(false);?>
 							     </li>
 							  </ul>
 						  <?= $this->render('_employee')?>

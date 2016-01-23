@@ -83,7 +83,7 @@ class Employee extends CeActivieRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['manager_employee_id', 'authority_id', 'position_id', 'department_id', 'bank_id', 'religion_id', 'marriage_status_id', 'nation_id', 'province_id', 'country_id', 'status_id', 'is_admin', 'birthdate', 'gender', 'card_issue_id', 'passport_expire', 'passport_issue', 'tax_date_issue', 'start_working_date', 'is_visible', 'last_activity_datetime', 'last_login_datetime', 'datetime_created', 'lastup_datetime', 'lastup_employee_id', 'disabled'], 'integer'],
+            [['id', 'manager_employee_id', 'authority_id', 'position_id', 'department_id', 'bank_id', 'religion_id', 'marriage_status_id', 'nation_id', 'province_id', 'country_id', 'status_id', 'is_admin', 'birthdate', 'gender', 'card_issue_id', 'passport_expire', 'passport_issue', 'tax_date_issue', 'start_working_date', 'is_visible', 'last_activity_datetime', 'last_login_datetime', 'datetime_created', 'lastup_datetime', 'lastup_employee_id', 'disabled'], 'integer'],
             [['authority_id', 'position_id', 'department_id', 'bank_id', 'religion_id', 'marriage_status_id', 'nation_id', 'province_id', 'country_id', 'status_id', 'firstname', 'lastname', 'username', 'password', 'email', 'birthdate'], 'required'],
             [['city_code', 'firstname', 'lastname', 'email', 'work_email'], 'string', 'max' => 99],
             [['username'], 'string', 'max' => 128],

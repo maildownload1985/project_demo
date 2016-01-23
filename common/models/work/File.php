@@ -41,7 +41,6 @@ class File extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['owner_id', 'owner_object', 'name', 'encoded_name', 'path'], 'required'],
             [['owner_id', 'employee_id', 'file_size', 'lastup_datetime', 'datetime_created', 'lastup_employee_id'], 'integer'],
             [['path'], 'string'],
             [['is_image', 'disabled'], 'boolean'],
@@ -75,13 +74,31 @@ class File extends \yii\db\ActiveRecord
     
     public function upload()
     {
-    	if ($this->validate()) {
-    		foreach ($this->imageFiles as $file) {
-    			$file->saveAs('uploads/' . $file->baseName . '.' . $file->extension);
-    		}
-    		return true;
-    	} else {
-    		return false;
+//     	if ($this->validate()) {
+//     		foreach ($this->imageFiles as $file) {
+//     			$file->saveAs('upload/' . $file->baseName .  '_' .  Yii::$app->user->identity->id .  '.' . $file->extension);
+//     		}
+//     		return true;
+//     	} else {
+//     		return false;
+//     	}
+
+    	$data_files = [];
+    	foreach ($this->imageFiles as $file) {
+    		$data_files[] = [
+    		'owner_id' 		=> $this->owner_id,
+    		'employee_id' 	=> Yii::$app->user->identity->id,
+    		'owner_object' 	=> 'event',
+    		'name' 			=> $file->baseName,//name
+    		'encoded_name' 	=> $file->baseName,
+    		'path' 			=> 'URL',
+    		'is_image' 		=> 0,
+    		'file_type' 	=> $file->extension,
+    		'file_size' 	=> $file->size
+    		];
+    		$file->saveAs('upload/' . $file->baseName .  '_' .  Yii::$app->user->identity->id .  '.' . $file->extension);
     	}
+    	$connection = \Yii::$app->db;
+    	$connection->createCommand()->batchInsert($this->tableName(), array_keys($data_files[0]), $data_files)->execute();
     }
 }
