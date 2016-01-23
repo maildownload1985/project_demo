@@ -282,7 +282,6 @@ this.showModal = myModal.activate;
 
 
 calendarDemoApp.controller('MainCtrl', function ($scope) {
-	//console.log('aaaaaaa');
     $scope.showModal = false;
     $scope.toggleModal = function(){
         $scope.showModal = !$scope.showModal;

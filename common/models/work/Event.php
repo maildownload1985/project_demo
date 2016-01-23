@@ -45,7 +45,7 @@ class Event extends CeActivieRecord
     {
         return [
             [['calendar_id', 'employee_id', 'datetime_created', 'lastup_datetime', 'lastup_employee_id'], 'integer'],
-            [['name', 'description', 'start_datetime', 'end_datetime', 'address' ], 'required'],
+            [['name', 'description', 'start_datetime', 'end_datetime', 'address', 'calendar_id' ], 'required'],
             [['description', 'description_parse'], 'string'],
             [['is_public', 'disabled'], 'boolean'],
             [['start_datetime', 'end_datetime'], 'safe'],
@@ -89,6 +89,11 @@ class Event extends CeActivieRecord
     
     public function getEventCalendar() {
         return $this->find()->asArray()->all();
+    }
+    
+    public function getCalendar()
+    {
+    	return $this->hasOne(Calendar::className(), ['id' => 'calendar_id']);
     }
     
 //     public function beforeSave($insert) {

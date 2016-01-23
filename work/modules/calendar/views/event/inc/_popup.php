@@ -16,9 +16,9 @@ use kartik\widgets\ActiveForm;
 
 		<div class="tab-content">
 			<br />
-			<?= $this->render('_event', ['form' => $form, 'event' => $event, 'model_remind' => $model_remind, 'model_calendar' => $model_calendar, 'model_file' => $model_file])?>
+			<?= $this->render('_event', ['form' => $form, 'event' => $event, 'model_remind' => $model_remind, 'model_file' => $model_file])?>
 				    
-			<?= $this->render('_inviation', ['form' => $form, 'inviation' => $inviation, 'model_department' => $model_department, 'model_sms' => $model_sms, 'model_employee' => $model_employee,])?>
+			<?= $this->render('_inviation', ['form' => $form, 'model_department' => $model_department, 'model_sms' => $model_sms, 'model_employee' => $model_employee,])?>
 		</div>
 		
 	<?php ActiveForm::end(); ?>

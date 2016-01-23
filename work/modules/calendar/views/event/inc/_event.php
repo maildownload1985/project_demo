@@ -58,7 +58,6 @@ use common\models\work\Event;
 
 				<div class="container">
 					<div class='col-md-6'>
-						<h4><?= Yii::t('app', 'Files');?></h4>
 						<div class="form-group">
 						<?= $form->field($model_file, 'imageFiles[]')->fileInput(['multiple' => true, 'accept' => 'image/*', 'class' => "file", 'data-upload-url' => '#']) ?>
 						</div>
@@ -67,9 +66,8 @@ use common\models\work\Event;
 
 				<div class="container">
 					<div class='col-md-6'>
-						<h4><?= Yii::t('app', 'Calendar');?></h4>
 						<div class="form-group">
-							<?= $form->field($model_calendar, 'id')->dropDownList(Event::getCalendarOption(), ['prompt'=>  Yii::t('app', 'Please choose your type')])->label(false); ?>
+							<?= $form->field($event, 'calendar_id')->dropDownList(Event::getCalendarOption(), ['prompt'=>  Yii::t('app', 'Please choose your type')]); ?>
 						</div>
 					</div>
 				</div>

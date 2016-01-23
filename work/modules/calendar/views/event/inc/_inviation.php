@@ -22,20 +22,19 @@ use kartik\widgets\ActiveForm;
 					<div class='col-md-6'>
 						<div ng-controller="list_employee">
 							  <ui-select multiple ng-model="multipleDemo.selectedPeople" theme="select2" ng-disabled="disabled" style="width: 100%;">
-							    <ui-select-match placeholder="Select person...">{{$item.name}} &lt;{{$item.email}}&gt;</ui-select-match>
-							    <ui-select-choices repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
-							      <div ng-bind-html="person.name | highlight: $select.search"></div>
+							    <ui-select-match placeholder="Select person...">{{$item.fullname}} &lt;{{$item.department}}&gt;</ui-select-match>
+							    <ui-select-choices repeat="person in people | propsFilter: {fullname: $select.search, department: $select.search}">
+							      <div ng-bind-html="person.fullname | highlight: $select.search"></div>
 							      <small>
-							        email: {{person.email}}
-							        age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+							        Department: {{person.department}}
 							      </small>
 							    </ui-select-choices>
 							  </ui-select>
 							  <br/><br/>
-							  <ul>
-							     <li ng-repeat=" people in multipleDemo.selectedPeople" style="visibility: hidden;">
+							  <ul style="display: none">
+							     <span ng-repeat="people in multipleDemo.selectedPeople" style="visibility: hidden;">
 							    	 <?= $form->field($model_employee, 'id[]')->hiddenInput(['value'=>'{{people.id}}'])->label(false);?>
-							     </li>
+							     </span>
 							  </ul>
 						  <?= $this->render('_employee')?>
 						  <br/>

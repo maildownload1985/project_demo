@@ -74,15 +74,6 @@ class File extends \yii\db\ActiveRecord
     
     public function upload()
     {
-//     	if ($this->validate()) {
-//     		foreach ($this->imageFiles as $file) {
-//     			$file->saveAs('upload/' . $file->baseName .  '_' .  Yii::$app->user->identity->id .  '.' . $file->extension);
-//     		}
-//     		return true;
-//     	} else {
-//     		return false;
-//     	}
-
     	$data_files = [];
     	foreach ($this->imageFiles as $file) {
     		$data_files[] = [
@@ -91,7 +82,7 @@ class File extends \yii\db\ActiveRecord
     		'owner_object' 	=> 'event',
     		'name' 			=> $file->baseName,//name
     		'encoded_name' 	=> $file->baseName,
-    		'path' 			=> 'URL',
+    		'path' 			=> 'upload/' . $file->baseName .  '_' .  Yii::$app->user->identity->id .  '.' . $file->extension,
     		'is_image' 		=> 0,
     		'file_type' 	=> $file->extension,
     		'file_size' 	=> $file->size

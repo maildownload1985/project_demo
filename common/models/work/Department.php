@@ -2,6 +2,8 @@
 
 namespace common\models\work;
 
+use common\models\Employee;
+
 use common\components\db\CeActivieRecord;
 
 use Yii;
@@ -55,5 +57,10 @@ class Department extends CeActivieRecord
             'lastup_employee_id' => Yii::t('work', 'Lastup Employee ID'),
             'disabled' 			 => Yii::t('work', 'Disabled'),
         ];
+    }
+    
+    public function getEmployees()
+    {
+    	return $this->hasMany(Employee::className(), ['department_id' => 'id']);
     }
 }

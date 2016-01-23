@@ -2,6 +2,8 @@
 
 namespace common\models;
 
+use common\models\work\Department;
+
 use Yii;
 use yii\web\IdentityInterface;
 use yii\base\NotSupportedException;
@@ -296,15 +298,12 @@ class Employee extends CeActivieRecord implements IdentityInterface
     /**
      * get employee
      */
-    public function getDataEmployees() {
-    	$data = $this->find()->asArray()->all();
-    	return $data;
-    }
-
-    /**
-     * get employee
-     */
     public function getFullNameLogin() {
     	return Yii::$app->user->identity->firstname . ' '. Yii::$app->user->identity->lastname;
+    }
+    
+    public static function getDepartment()
+    {
+    	return $this->hasOne(Department::className(), ['id' => 'department_id']);
     }
 }
