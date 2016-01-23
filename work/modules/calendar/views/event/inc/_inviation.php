@@ -32,6 +32,11 @@ use kartik\widgets\ActiveForm;
 							    </ui-select-choices>
 							  </ui-select>
 							  <br/><br/>
+							  <ul>
+							     <li ng-repeat=" people in multipleDemo.selectedPeople" style="visibility: hidden;">
+							         <input type="hidden" name="employee[]" value="{{people.id}}"></input>
+							     </li>
+							  </ul>
 						  <?= $this->render('_employee')?>
 						  <br/>
 						</div>
