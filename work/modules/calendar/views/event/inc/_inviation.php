@@ -24,10 +24,10 @@ use kartik\widgets\ActiveForm;
 							  <ui-select multiple ng-model="multipleDemo.selectedPeople" theme="select2" ng-disabled="disabled" style="width: 100%;">
 							    <ui-select-match placeholder="Select person...">
 							    	<div class="test">
-							    		<img alt="{{$item.urlImage}}" src="{{$item.urlImage}}" width="60px">
+							    		<img alt="{{$item.urlImage}}" src="{{$item.urlImage}}" width="20px">
 							    		<div style="float: right; padding: 0px 5px;">
-							    		<b>Name:</b> {{$item.fullname}}
-							    		<br/><b>Department:</b> {{$item.department}}
+							    		{{$item.fullname}}
+							    		<br/><b>{{$item.department}}</b> 
 							    		</div>
 							    	</div>
 							    	
@@ -58,7 +58,6 @@ use kartik\widgets\ActiveForm;
 				<div class="container">
 					<div class='col-md-6 form-inline align_right'>
 							<?= Html::Button(Yii::t('app', 'Next'), ['class'=> 'btn btn-primary btnNext']) ;?>
-							<?= Html::submitButton(Yii::t('app', 'Submit'), ['class'=> 'btn btn-large btn-primary']) ;?>
 							<?= Html::submitButton(Yii::t('app', 'Close'), ['class'=> 'btn btn-danger btn-default', 'data-dismiss' => 'modal']) ;?>
 						</p>
 					</div>
