@@ -47,15 +47,11 @@ class EventController extends CeController
     {
     	
         $model_event = new Event();
-        $model_inviation = new Invitation();
         $model_remind = new Remind();
         $model_department = new Department();
         $model_employee = new Employee();
         $model_sms = new Sms();
         $model_file = new File();
-        $model_Notification = new Notification();
-        $model_EmployeeActivity = new EmployeeActivity();
-        $model_Activity = new Activity();
         
         if ($model_event->load(Yii::$app->request->post()) 
         		&& $model_remind->load(Yii::$app->request->post())
@@ -138,9 +134,9 @@ class EventController extends CeController
 	        	$connection = \Yii::$app->db;
 	        	
 	        	//======================= Start insert table Invitation =======================
-	        	$connection->createCommand()->batchInsert($model_inviation->tableName(), array_keys($data_department_ids[0]), $data_department_ids)->execute();
+	        	$connection->createCommand()->batchInsert(Invitation::tableName(), array_keys($data_department_ids[0]), $data_department_ids)->execute();
 	        	if (!empty($model_employee->id)) {
-	        		$connection->createCommand()->batchInsert($model_inviation->tableName(), array_keys($data_employee_ids[0]), $data_employee_ids)->execute();
+	        		$connection->createCommand()->batchInsert(Invitation::tableName(), array_keys($data_employee_ids[0]), $data_employee_ids)->execute();
 	        	}
 	        	//======================= END insert table Invitation =======================
 	        	
@@ -154,12 +150,13 @@ class EventController extends CeController
 	        	//======================= END insert table Redmind =======================
 	        	
 	        	//======================= Start insert table Notification: =======================
-	        	$connection->createCommand()->batchInsert($model_Notification->tableName(), array_keys($data_Notification[0]), $data_Notification)->execute();
+	        	$connection->createCommand()->batchInsert(Notification::tableName(), array_keys($data_Notification[0]), $data_Notification)->execute();
 	        	 
 	        	//======================= END insert table Notification: =======================
 	        	
 	        	//======================= Start insert table Employee_activity: =======================
 		        //check info data table EmployeeActivity is exist
+	        	$model_EmployeeActivity = new EmployeeActivity();
 		        if($data_EmployeeActivitys = $model_EmployeeActivity->find()->andWhere(['employee_id' => Yii::$app->user->identity->id])->one()){
 		        	$data_EmployeeActivitys->activity_calendar  += 1;
 		        	$data_EmployeeActivitys->activity_total  	+= 1;
@@ -174,6 +171,7 @@ class EventController extends CeController
 	
 	        	
 	        	//======================= Start insert table Activity: =======================
+		        $model_Activity = new Activity();
 	        	$model_Activity->owner_id 			= $model_event->id;
 	        	$model_Activity->owner_table 		= 'event';
 	        	$model_Activity->parent_employee_id = 0;

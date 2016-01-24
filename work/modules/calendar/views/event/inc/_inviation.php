@@ -22,21 +22,27 @@ use kartik\widgets\ActiveForm;
 					<div class='col-md-6'>
 						<div ng-controller="list_employee">
 							  <ui-select multiple ng-model="multipleDemo.selectedPeople" theme="select2" ng-disabled="disabled" style="width: 100%;">
-							    <ui-select-match placeholder="Select person...">{{$item.fullname}} &lt;{{$item.department}}&gt;</ui-select-match>
+							    <ui-select-match placeholder="Select person...">
+							    	<div class="test">
+							    		<img alt="{{$item.urlImage}}" src="{{$item.urlImage}}" width="60px">
+							    		<div style="float: right; padding: 0px 5px;">
+							    		<b>Name:</b> {{$item.fullname}}
+							    		<br/><b>Department:</b> {{$item.department}}
+							    		</div>
+							    	</div>
+							    	
+							    </ui-select-match>
 							    <ui-select-choices repeat="person in people | propsFilter: {fullname: $select.search, department: $select.search}">
 							      <div ng-bind-html="person.fullname | highlight: $select.search"></div>
-							      <small>
 							        Department: {{person.department}}
-							      </small>
 							    </ui-select-choices>
 							  </ui-select>
-							  <br/><br/>
+							  <br/>
 							  <ul style="display: none">
 							     <span ng-repeat="people in multipleDemo.selectedPeople" style="visibility: hidden;">
 							    	 <?= $form->field($model_employee, 'id[]')->hiddenInput(['value'=>'{{people.id}}'])->label(false);?>
 							     </span>
 							  </ul>
-						  <?= $this->render('_employee')?>
 						  <br/>
 						</div>
 					</div>
@@ -50,7 +56,7 @@ use kartik\widgets\ActiveForm;
 					</div>
 				</div>
 				<div class="container">
-					<div class='col-md-6'>
+					<div class='col-md-6 form-inline align_right'>
 							<?= Html::Button(Yii::t('app', 'Next'), ['class'=> 'btn btn-primary btnNext']) ;?>
 							<?= Html::submitButton(Yii::t('app', 'Submit'), ['class'=> 'btn btn-large btn-primary']) ;?>
 							<?= Html::submitButton(Yii::t('app', 'Close'), ['class'=> 'btn btn-danger btn-default', 'data-dismiss' => 'modal']) ;?>
