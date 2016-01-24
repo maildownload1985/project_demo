@@ -340,20 +340,8 @@ class EventController extends CeController
         $this->layout=false;
         header('Content-type: application/json');
         
-//         $modelDepartment = new Department();
-//         $tmpDataDepartments = $modelDepartment->find()->all();
-//         $employees = [];
-//         if (!empty($tmpDataDepartments)) {
-//         	foreach ($tmpDataDepartments as $tmpDataDepartment) {
-//         		$employees[] = [
-//         			'id' => $tmpDataDepartment->id,
-//         			'name' => $tmpDataDepartment->name,
-//         		];
-//         	}
-//         }
-        
         $modelEmployee = new Employee();
-        $tmpDataEmployees = $modelEmployee->find()->all();
+        /*$tmpDataEmployees = $modelEmployee->find()->all();
         $employees = [];
         if (!empty($tmpDataEmployees)) {
         	foreach ($tmpDataEmployees as $tmpDataEmployee) {
@@ -365,7 +353,40 @@ class EventController extends CeController
         				'email' => $tmpDataEmployee->email
         		];
         	}
+        }*/
+        
+        $query = new \yii\db\Query();
+        $query  ->select([
+                'employee.id', 
+                'employee.firstname',
+                'employee.lastname',
+                'employee.profile_image_path',
+                'employee.email',
+                'department.name'
+                ]
+                )  
+            ->from('employee')
+            ->join('INNER JOIN', 'department', 'department.id = employee.department_id')
+            ->where(['employee.disabled' => 0])
+            ->andWhere(['department.disabled' => 0])
+            ;       
+                
+        $command = $query->createCommand();
+        $tmpDataEmployees = $command->queryAll();
+        
+        $employees = [];
+        if (!empty($tmpDataEmployees)) {
+            foreach ($tmpDataEmployees as $tmpDataEmployee) {
+                $employees[] = [
+                        'id' => $tmpDataEmployee['id'],
+                        'fullname' => $tmpDataEmployee['firstname'] . ' '. $tmpDataEmployee['lastname'],
+                        'department' => $tmpDataEmployee['name'],
+                        'urlImage' => $tmpDataEmployee['profile_image_path'],
+                        'email' => $tmpDataEmployee['email']
+                ];
+            }
         }
+        
         echo json_encode($employees);
     }
 }
